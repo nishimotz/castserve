@@ -43,8 +43,8 @@ class MediaitemController < ApplicationController
   end
   
   def show
-    # TODO
-    @mediaitem = Mediaitem.find(params[:id])
+    @item = Mediaitem.find(params[:id])
+    # @infos = @item.mediaiteminfo
   end
   
 end

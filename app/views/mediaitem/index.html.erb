@@ -1,24 +1,26 @@
 <%= link_to 'new', :action => 'new'%>
-<pre>
-Title: <%= @title %>
-Link: <%= url_for :controller => 'caststudio', :action => 'rpc', :only_path => false %>
-Description: <%= @description %>
-Language: <%= @language %>
-PubDate: <%= @pubdate %>
-Category: <%= @ch_category %>
+
+<ul>
+<li> Title: <%= @title %>
+<li> Link: <%= url_for :controller => 'caststudio', :action => 'rpc', :only_path => false %>
+<li> Description: <%= @description %>
+<li> Language: <%= @language %>
+<li> PubDate: <%= @pubdate %>
+<li> Category: <%= @ch_category %>
+</ul>
 
 <% @items.each do |i| -%>
-item
-title <%= i.title %>
-link <%= url_for :controller => 'caststudio', :action => 'rpc', :only_path => false %>
-description <%= i.desc %>
-pubDate <%= i.pubdate %>
-author <%= i.author %>
-category <%= i.category %>
-enclosure
+<ul>
+<li> <%= link_to '[show]', :action => 'show', :id => i.id %>
+<li> title <%= i.title %>
+<li> link <%= url_for :controller => 'caststudio', :action => 'rpc', :only_path => false %>
+<li> description <%= i.desc %>
+<li> pubDate <%= i.pubdate %>
+<li> author <%= i.author %>
+<li> category <%= i.category %>
+<li> enclosure
   url="<%= url_for :controller => 'audio', :action => i.filename_without_ext, :format => 'wav', :only_path => false %>"
   length="0" 
   type="<%= i.filetype %>"
-
+</ul>
 <% end -%>
-

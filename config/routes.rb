@@ -36,9 +36,8 @@ ActionController::Routing::Routes.draw do |map|
   # nishimoto
   map.connect ':controller/:action.:format'    # mediaitem/list.rss
   map.connect ':controller/:action'            # caststudio/rpc
-  #map.connect '/', :controller => 'station', :action => 'show'
-  map.root :controller => "home" 
 
+  map.root :controller => "home" 
   map.connect 'login', :controller => 'sessions', :action => 'create'
   map.connect 'logout', :controller => 'sessions', :action => 'destroy'
 end

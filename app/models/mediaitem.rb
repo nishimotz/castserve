@@ -1,11 +1,15 @@
+# require 'cgi'
+
 class Mediaitem < ActiveRecord::Base
   has_and_belongs_to_many :users
+  has_and_belongs_to_many :mediaiteminfo
 
   #def link
   #  'http://localhost:3000/caststudio/rpc'
   #end
   
   def pubdate
+    # CGI::rfc1123_date(Time.new.to_s)
     Time.parse(Time.new.to_s).rfc822
   end
   

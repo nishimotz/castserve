@@ -12,4 +12,9 @@ class ApplicationController < ActionController::Base
   def logged_in?
     session[:password] == "pass"
   end
+
+  before_filter :check_login
+  def check_login
+    @user = session[:user]
+  end
 end

@@ -6,6 +6,9 @@
 <td><%= s.number %></td> 
 <td><%= s.title %></td>
 <td>
+<%= link_to 'show', :action => 'show_station', :format => 'html', :id => s.id  %>
+</td>
+<td>
 <%= link_to 'open', :controller => 'caststudio', :action => 'run', :format => 'jnlp', :s => s.number %>
 </td>
 </tr>
