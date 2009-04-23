@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<jnlp spec="1.0+">
+ <information>
+  <title><%= @jnlp_title %></title>
+  <vendor><%= @jnlp_vendor %></vendor>
+ </information>
+ <resources>
+  <j2se version="1.6+" initial-heap-size="<%= @jnlp_heap_size %>" max-heap-size="<%= @jnlp_heap_size %>" />
+  <jar href="<%= url_for :controller => 'java', :action => 'caststudio', :format => 'jar', 
+  :only_path => false %>" main="true" download="eager" />
+ </resources>
+ <application-desc main-class="com.nishimotz.mmm.CastStudio">
+      <argument>-g</argument> <argument><%= @logging %></argument>
+      <argument>-r</argument> <argument><%= url_for :controller => 'mediaitem', :action => 'index', 
+      :format => 'rss', :only_path => false %></argument>
+      <argument>-s</argument> <argument><%= @station %></argument>
+      <argument>-u</argument> <argument><%= @uid %></argument>
+ </application-desc>
+ <security> <all-permissions/> </security>
+</jnlp>

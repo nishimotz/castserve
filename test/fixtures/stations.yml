@@ -1,0 +1,50 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+s01:
+  number: '00000'
+  title:  "Default Box"
+s02:
+  number: '00100'
+  title:  "sound effect(local pc file)"
+s03:
+  number: '11100'
+  title:  "DEMO (nishimotz)"
+s04:
+  number: '11111'
+  title:  "試験放送 (nishimotz)"
+s05:
+  number: '22222'
+  title:  "試験放送 (kawasaki)"
+s06:
+  number: '77700'
+  title:  "FM CHAPPY (Special)"
+s07:
+  number: '77701'
+  title:  "FM CHAPPY (金) 居留守放送局"
+s08:
+  number: '77702'
+  title:  "居留守放送局へのご意見"
+s09:
+  number: '77711'
+  title:  "FM CHAPPY (土) ウィークエンドライフ"
+s10:
+  number: '77735'
+  title:  "FM CHAPPY (金) 気ままにティータイム"
+s11:
+  number: '77755'
+  title:  "FM CHAPPY (火木金) アフタヌーンスクエア (美和さなえ)"
+s12:
+  number: '77761'
+  title:  "FM CHAPPY (土) サタデーヒット・ザ・ランキング"
+s13:
+  number: '77777'
+  title:  "FM CHAPPY (日) 週刊ブログ"
+s14:
+  number: '88801'
+  title:  "居留守放送局（芸人さん）"
+s15:
+  number: '88802'
+  title:  "居留守放送局 ボイスレコーダ素材"
+s16:
+  number: '88803'
+  title:  "居留守放送局 ステッカー素材"

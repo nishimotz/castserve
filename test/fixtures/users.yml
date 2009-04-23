@@ -1,0 +1,8 @@
+u01:
+  id: 101
+  name: 'nishi'
+  password:  'pass'
+u02:
+  id: 102
+  name: 'higashi'
+  password:  'pass'

@@ -1,0 +1,10 @@
+<h1>User#index</h1>
+<table border="1">
+<% @users.each do |i| -%>
+<tr>
+<td><%= i.id %></td> 
+<td><%= i.name %></td> 
+<td><%= i.password %></td>
+</tr>
+<% end -%>
+</table>

@@ -1,0 +1,25 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+#
+# rake db:fixtures:load
+
+item1:
+  station: 77735
+  title: タイトル１
+  desc: 補足１
+  author: 発言者１
+  filepath: FAK_3Z82A.wav
+  
+item2:
+  station: 77735
+  title: タイトル２
+  desc: 補足２
+  author: 発言者２
+  filepath: FAP_43O6571A.wav
+
+item3:
+  station: 77735
+  title: タイトル3
+  desc: 補足3
+  author: 発言者3
+  filepath: FAP_43O6571A_ST.wav
+  

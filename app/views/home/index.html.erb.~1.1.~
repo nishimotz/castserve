@@ -1,0 +1,27 @@
+<h1>Login</h1>
+<% form_for :home, @home,
+    :url => { :action => 'index' },
+    :html => { :multipart => true } do |form| %>
+<p>User: <%= form.text_field :user %></p>
+<p>Password:   <%= form.text_field :password %></p>
+<%= submit_tag 'login' %>
+<% end %>
+
+
+<h1>Station</h1>
+
+<ul>
+  <li><a href="/station/index.html">/station/index.html</a></li>
+</ul>
+
+<h1>User</h1>
+
+<ul>
+  <li><a href="/user/index.html">/user/index.html</a></li>
+</ul>
+
+<h1>Mediaitem</h1>
+
+<ul>
+  <li><a href="/mediaitem/index.html">/mediaitem/index.html</a></li>
+</ul>

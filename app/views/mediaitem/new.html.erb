@@ -1,0 +1,17 @@
+<%# http://localhost:3000/mediaitem/new %>
+<%
+# after submit : http://localhost:3000/mediaitem/show/608984345 
+# causes Unknown action
+# No action responded to show
+%>
+
+<% form_for :mediaitem, @mediaitem,
+    :url => { :action => 'create' },
+    :html => { :multipart => true } do |form| %>
+<p>Station: <%= form.text_field :station %></p>
+<p>Title:   <%= form.text_field :title %></p>
+<p>Desc:    <%= form.text_field :desc %></p>
+<p>Author:  <%= form.text_field :author %></p>
+<p>File:    <%= form.file_field :uploaded_audio %></p>
+<%= submit_tag '更新' %>
+<% end %>

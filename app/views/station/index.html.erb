@@ -1,0 +1,13 @@
+<h1>Station#index</h1>
+<p>use 77735 for test.</p>
+<table border="1">
+<% @stations.each do |s| -%>
+<tr>
+<td><%= s.number %></td> 
+<td><%= s.title %></td>
+<td>
+<%= link_to 'open', :controller => 'caststudio', :action => 'run', :format => 'jnlp', :s => s.number %>
+</td>
+</tr>
+<% end -%>
+</table>
