@@ -1,18 +1,33 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
 		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-	<title>Controller Name: <%= controller.action_name %></title>
-    <link rel="stylesheet" type="text/css" href="/stylesheets/pc.css" />
+	<title>CastStudio <%= controller.action_name %></title>
+<link rel="stylesheet" type="text/css" href="/stylesheets/pc.css" />
 <% if false %>
-	<%= stylesheet_link_tag 'filename' %>
+<%= stylesheet_link_tag 'filename' %>
 <% end %>
 </head>
 <body>
-<div><%= link_to 'top', :controller => 'home', :action => 'index' %> </div>
 <p style="color: green"><%= flash[:notice] %></p>
+
+<% if logged_in? -%>
+<p>
+<%= link_to '[top]', :controller => 'home', :action => 'index' %>
+You are logged in as <%= @user %>.
+<%= link_to '[logout]', :controller => 'sessions', :action => 'destroy' %>
+</p>
+<% else -%>
+<%   form_tag ({ :controller => 'sessions', :action => 'create' },
+  { :multipart => true }) do -%>
+<p>Login as User: <%= text_field_tag :user %>
+Password:   <%= password_field_tag :password %>
+<%= submit_tag 'login' %>
+</p>
+<%   end -%>
+<% end -%>
+
 <%= yield %>
 </body>
 </html>
