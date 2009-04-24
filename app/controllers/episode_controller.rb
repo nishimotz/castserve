@@ -1,5 +1,5 @@
 class EpisodeController < ApplicationController
-  def list
+  def index
     #
   end
   
