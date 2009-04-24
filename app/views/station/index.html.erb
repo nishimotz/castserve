@@ -6,10 +6,23 @@
 <td><%= s.number %></td> 
 <td><%= s.title %></td>
 <td>
-<%= link_to 'show', :action => 'show_station', :format => 'html', :id => s.id  %>
+<%= link_to 'episodes', :controller => 'episode', 
+  :action => 'list', :format => 'html', :station_id => s.id  %>
 </td>
 <td>
-<%= link_to 'open', :controller => 'caststudio', :action => 'run', :format => 'jnlp', :s => s.number %>
+<%= link_to 'resources', :controller => 'resource', 
+  :action => 'list', :format => 'html', :station_id => s.id  %>
+</td>
+<td>
+<%= link_to 'stickers', :controller => 'sticker', 
+  :action => 'list', :format => 'html', :station_id => s.id  %>
+</td>
+<td>
+<%= link_to 'view', :action => 'show_station', :format => 'html', :id => s.id  %>
+</td>
+<td>
+<%= link_to 'cast', :controller => 'caststudio', :action => 'run', 
+  :format => 'jnlp', :s => s.number %>
 </td>
 </tr>
 <% end -%>
