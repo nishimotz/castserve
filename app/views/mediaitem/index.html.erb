@@ -9,18 +9,26 @@
 <li> Category: <%= @ch_category %>
 </ul>
 
+<table border="1">
 <% @items.each do |i| -%>
-<ul>
-<li> <%= link_to '[show]', :action => 'show', :id => i.id %>
-<li> title <%= i.title %>
-<li> link <%= url_for :controller => 'caststudio', :action => 'rpc', :only_path => false %>
+<tr>
+	
+<td> <%= link_to '[show]', :action => 'show', :id => i.id %>
+</td>
+<td> title <%= i.title %></td>
+<td> description <%= i.desc %></td>
+<td> pubDate <%= i.pubdate %></td>
+<!--
+<td> link <%= url_for :controller => 'caststudio', :action => 'rpc', :only_path => false %>
+</td>
 <li> description <%= i.desc %>
-<li> pubDate <%= i.pubdate %>
 <li> author <%= i.author %>
 <li> category <%= i.category %>
 <li> enclosure
   url="<%= url_for :controller => 'audio', :action => i.filename_without_ext, :format => 'wav', :only_path => false %>"
   length="0" 
   type="<%= i.filetype %>"
-</ul>
+-->
+</tr>
 <% end -%>
+</table>
