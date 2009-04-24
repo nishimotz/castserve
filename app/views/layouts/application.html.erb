@@ -28,6 +28,22 @@ Password:   <%= password_field_tag :password %>
 <%   end -%>
 <% end -%>
 
+<table border='1'><tr>
+<td>
+<%=link_to 'stations', :controller => 'station'%>
+</td>	
+<td>
+<%=link_to 'episodes', :controller => 'episode', :action => 'list'%>
+</td>	
+<td>
+<%=link_to 'mediaitems', :controller => 'mediaitem'%>
+</td>	
+<td>
+<%=link_to 'resources', :controller => 'resource'%>
+</td>	
+</tr></table>
+
+
 <%= yield %>
 </body>
 </html>
