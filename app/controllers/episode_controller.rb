@@ -3,7 +3,7 @@ class EpisodeController < ApplicationController
     #
   end
   
-  def view
+  def show
     #
   end
 end

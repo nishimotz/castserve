@@ -3,22 +3,20 @@
 <table border="1">
 <% @stations.each do |s| -%>
 <tr>
-<td><%= s.number %></td> 
-<td><%= s.title %></td>
 <td>
-<%= link_to 'episodes', :controller => 'episode', 
-  :action => 'list', :format => 'html', :station_id => s.id  %>
+<%= link_to s.number, :action => 'show_station', :id => s.id  %>
 </td>
 <td>
-<%= link_to 'resources', :controller => 'resource', 
-  :action => 'list', :format => 'html', :station_id => s.id  %>
+<%= link_to s.title, :action => 'show_station', :id => s.id  %>
 </td>
 <td>
-<%= link_to 'stickers', :controller => 'sticker', 
-  :action => 'list', :format => 'html', :station_id => s.id  %>
+<%= link_to 'episodes', :controller => 'episode', :station_id => s.id  %>
 </td>
 <td>
-<%= link_to 'station', :action => 'show_station', :format => 'html', :id => s.id  %>
+<%= link_to 'resources', :controller => 'resource', :station_id => s.id  %>
+</td>
+<td>
+<%= link_to 'stickers', :controller => 'sticker', :station_id => s.id  %>
 </td>
 <td>
 <%= link_to 'cast', :controller => 'caststudio', :action => 'run', 
