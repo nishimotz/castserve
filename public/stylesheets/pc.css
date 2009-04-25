@@ -193,7 +193,7 @@ tfoot th.style_th {
 	color:inherit;
 	background-color:#E0E8F0;
 }
-.style_table {
+table {
 	padding:0px;
 	border:0px;
 	margin:auto;
@@ -202,14 +202,14 @@ tfoot th.style_th {
 	background-color:#ccd5dd;
 	font-size:80%;
 }
-.style_th {
+th {
 	padding:5px;
 	margin:1px;
 	text-align:center;
 	color:inherit;
 	background-color:#EEEEEE;
 }
-.style_td {
+td {
 	padding:5px;
 	margin:1px;
 	color:inherit;

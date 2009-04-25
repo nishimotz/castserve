@@ -10,27 +10,25 @@
 <% end %>
 </head>
 <body>
-<p style="color: green"><%= flash[:notice] %></p>
 
-
-<table class="style_table" cellspacing="1" border="0">
+<table cellspacing="1" border="0">
 <tr>
-<td class="style_td">
+<td>
 <%= link_to 'CastStudio Server', :controller => 'home', :action => 'index' %>
 </td>
-<td class="style_td">
+<td>
 <%=link_to 'stations', :controller => 'station'%>
 </td>	
-<td class="style_td">
+<td>
 <%=link_to 'episodes', :controller => 'episode'%>
 </td>	
-<td class="style_td">
+<td>
 <%=link_to 'mediaitems', :controller => 'mediaitem'%>
 </td>	
-<td class="style_td">
+<td>
 <%=link_to 'resources', :controller => 'resource'%>
 </td>	
-<td class="style_td">
+<td>
 <% if logged_in? -%>
 <p>
 You are logged in as <%= @user %>.
@@ -47,8 +45,7 @@ Password:   <%= password_field_tag :password %>
 <% end -%>
 </td>
 </tr></table>
-
-
+<p style="color: green"><%= flash[:notice] %></p>
 <%= yield %>
 </body>
 </html>

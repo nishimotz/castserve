@@ -1,3 +1,4 @@
+<h1>MediaItem List </h1>
 <%= link_to 'new', :action => 'new'%>
 
 <ul>
@@ -10,14 +11,17 @@
 </ul>
 
 <table class="style_table" cellspacing="1" border="0">
+<tr><th class="style_th">title</th>
+<th class="style_th">desc</th>
+<th class="style_th">date</th>
+</tr>
 <% @items.each do |i| -%>
 <tr>
-	
-<td> <%= link_to '[show]', :action => 'show', :id => i.id %>
+<td class="style_td"> 
+<%= link_to i.title, :action => 'show', :id => i.id %>
 </td>
-<td> title <%= i.title %></td>
-<td> description <%= i.desc %></td>
-<td> pubDate <%= i.pubdate %></td>
+<td class="style_td"> <%= i.desc %></td>
+<td class="style_td"> <%= i.pubdate %></td>
 <!--
 <td> link <%= url_for :controller => 'caststudio', :action => 'rpc', :only_path => false %>
 </td>
