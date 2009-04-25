@@ -183,16 +183,6 @@ pre {
 
 /* table */
 
-thead td.style_td,
-tfoot td.style_td {
-	color:inherit;
-	background-color:#D0D8E0;
-}
-thead th.style_th,
-tfoot th.style_th {
-	color:inherit;
-	background-color:#E0E8F0;
-}
 table {
 	padding:0px;
 	border:0px;
@@ -207,7 +197,7 @@ th {
 	margin:1px;
 	text-align:center;
 	color:inherit;
-	background-color:#EEEEEE;
+	background-color:#FFeecc;
 }
 td {
 	padding:5px;

@@ -35,7 +35,7 @@ You are logged in as <%= @user %>.
 <%= link_to '[logout]', :controller => 'sessions', :action => 'destroy' %>
 </p>
 <% else -%>
-<%   form_tag ({ :controller => 'sessions', :action => 'create' },
+<%   form_tag({ :controller => 'sessions', :action => 'create' },
   { :multipart => true }) do -%>
 <p>Login as User: <%= text_field_tag :user %>
 Password:   <%= password_field_tag :password %>
