@@ -12,9 +12,27 @@
 <body>
 <p style="color: green"><%= flash[:notice] %></p>
 
+
+<table class="style_table" cellspacing="1" border="0">
+<tr>
+<td class="style_td">
+<%= link_to 'CastStudio Server', :controller => 'home', :action => 'index' %>
+</td>
+<td class="style_td">
+<%=link_to 'stations', :controller => 'station'%>
+</td>	
+<td class="style_td">
+<%=link_to 'episodes', :controller => 'episode'%>
+</td>	
+<td class="style_td">
+<%=link_to 'mediaitems', :controller => 'mediaitem'%>
+</td>	
+<td class="style_td">
+<%=link_to 'resources', :controller => 'resource'%>
+</td>	
+<td class="style_td">
 <% if logged_in? -%>
 <p>
-<%= link_to '[top]', :controller => 'home', :action => 'index' %>
 You are logged in as <%= @user %>.
 <%= link_to '[logout]', :controller => 'sessions', :action => 'destroy' %>
 </p>
@@ -27,20 +45,7 @@ Password:   <%= password_field_tag :password %>
 </p>
 <%   end -%>
 <% end -%>
-
-<table border='1'><tr>
-<td>
-<%=link_to 'stations', :controller => 'station'%>
-</td>	
-<td>
-<%=link_to 'episodes', :controller => 'episode'%>
-</td>	
-<td>
-<%=link_to 'mediaitems', :controller => 'mediaitem'%>
-</td>	
-<td>
-<%=link_to 'resources', :controller => 'resource'%>
-</td>	
+</td>
 </tr></table>
 
 

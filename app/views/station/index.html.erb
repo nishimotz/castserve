@@ -1,24 +1,24 @@
 <h1>Station#index</h1>
 <p>use 77735 for test.</p>
-<table border="1">
+<table class="style_table" cellspacing="1" border="0">
 <% @stations.each do |s| -%>
 <tr>
-<td>
+<td class="style_td">
 <%= link_to s.number, :action => 'show_station', :id => s.id  %>
 </td>
-<td>
+<td class="style_td">
 <%= link_to s.title, :action => 'show_station', :id => s.id  %>
 </td>
-<td>
+<td class="style_td">
 <%= link_to 'episodes', :controller => 'episode', :station_id => s.id  %>
 </td>
-<td>
+<td class="style_td">
 <%= link_to 'resources', :controller => 'resource', :station_id => s.id  %>
 </td>
-<td>
+<td class="style_td">
 <%= link_to 'stickers', :controller => 'sticker', :station_id => s.id  %>
 </td>
-<td>
+<td class="style_td">
 <%= link_to 'cast', :controller => 'caststudio', :action => 'run', 
   :format => 'jnlp', :s => s.number %>
 </td>

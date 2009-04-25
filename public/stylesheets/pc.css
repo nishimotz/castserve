@@ -181,4 +181,39 @@ pre {
    width: 97%;
 }
 
+/* table */
+
+thead td.style_td,
+tfoot td.style_td {
+	color:inherit;
+	background-color:#D0D8E0;
+}
+thead th.style_th,
+tfoot th.style_th {
+	color:inherit;
+	background-color:#E0E8F0;
+}
+.style_table {
+	padding:0px;
+	border:0px;
+	margin:auto;
+	text-align:left;
+	color:inherit;
+	background-color:#ccd5dd;
+	font-size:80%;
+}
+.style_th {
+	padding:5px;
+	margin:1px;
+	text-align:center;
+	color:inherit;
+	background-color:#EEEEEE;
+}
+.style_td {
+	padding:5px;
+	margin:1px;
+	color:inherit;
+	background-color:#EEF5FF;
+}
+
 /* end of file */
