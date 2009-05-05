@@ -2,9 +2,11 @@
 <%= link_to 'new', :action => 'new'%>
 
 <table cellspacing="1" border="0">
+<% @resources.each do |i| -%>
 <tr>
-<td> Telephone box</td>
-<td> http://hil.t.u-tokyo.ac.jp/~nishi/mmm/ruby-cgi/?format=rss </td>
-<td> 2009-04-25 12:34:56 UTC</td>
+<td> <%= i.title %> </td>
+<td> <%= i.location %> </td>
+<td> <%= i.last_update %></td>
 </tr>
+<% end -%>
 </table>
