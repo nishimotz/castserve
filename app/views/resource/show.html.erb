@@ -1,14 +1,4 @@
-<h1>MediaItem Property</h1>
+<h1>Resource Property</h1>
 <table cellspacing="1" border="0">
-<tr><th>title</th> <td><%= @item.title %></td></tr>
-<tr><th>link</th>  <td><%= url_for :controller => 'caststudio', :action => 'rpc', :only_path => false %></td></tr>
-<tr><th>description</th> <td> <%= @item.desc %></td></tr>
-<tr><th>pubDate</th> <td> <%= @item.pubdate %></td></tr>
-<tr><th>author</th>  <td><%= @item.author %></td></tr>
-<tr><th>category</th><td> <%= @item.category %></td></tr>
-<tr><th>enclosure</th><td>
-url="<%= url_for :controller => 'audio', :action => @item.filename_without_ext, :format => 'wav', :only_path => false %>"
-length="0" 
-type="<%= @item.filetype %>"
-</td></tr> 
+<tr><th>title</th> <td><%= @resource.title %></td></tr>
 </table>

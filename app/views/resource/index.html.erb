@@ -4,7 +4,7 @@
 <table cellspacing="1" border="0">
 <% @resources.each do |i| -%>
 <tr>
-<td> <%= i.title %> </td>
+<td> <a href="<%=url_for :action => :show, :id => i.id %>"><%= i.title %></a> </td>
 <td> <%= i.location %> </td>
 <td> <%= i.last_update %></td>
 </tr>

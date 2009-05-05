@@ -6,4 +6,8 @@ class ResourceController < ApplicationController
   def show
     @resource = Resource.find(params[:id])
   end
+  
+  def new
+    #
+  end
 end
