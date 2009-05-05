@@ -1,0 +1,4 @@
+resource01:
+  id: 1
+  title: nishi message box
+  location: http://hil.t.u-tokyo.ac.jp/~nishi/mmm/ruby-cgi/?format=rss
