@@ -9,6 +9,7 @@
 
 <table cellspacing="1" border="0">
 <tr>
+<th>action</th>
 <th>title</th>
 <th>pubDate</th>
 <th>enclosure.type</th>
@@ -16,6 +17,8 @@
 </tr>
 <% @items.each do |i| -%>
 <tr>
+<td><%= button_to 'import', :action=>:import, :id=>@resource.id,
+ :import_pub_date=>i.pubDate, :import_url=>i.enclosure.url %></td>
 <td><%= i.title %></td>
 <td><%= i.pubDate %></td>
 <td><%= i.enclosure.type %></td>

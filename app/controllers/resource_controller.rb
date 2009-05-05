@@ -11,4 +11,8 @@ class ResourceController < ApplicationController
   def new
     #
   end
+  
+  def import
+    redirect_to :back #redirect_to :show, :id=>params[:id]
+  end
 end
