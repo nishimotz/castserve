@@ -89,10 +89,10 @@ EOD
 <var name="create"   expr="'1'"/>
 <block>
  <prompt bargein="false">
- <audio src="./wav/ja/m106.wav"/> <!-- これからあなたの -->
- <audio src="./wav/ja/m107.wav"/> <!-- 喋り終わったら＃を -->
+ <audio src="./wav/ja/m106.wav"/> <!-- korekara anata no -->
+ <audio src="./wav/ja/m107.wav"/> <!-- shaberi owattara sharp wo oshite kudasai -->
  take #{@c.rectake}
- <audio src="./wav/ja/m108.wav"/> <!-- では、録音します。3,2,1 -->
+ <audio src="./wav/ja/m108.wav"/> <!-- dewa rokuon shimasu, 3,2,1 -->
  </prompt>
 </block>
 <record name="msg" 
@@ -117,10 +117,10 @@ EOD
   def recording_end_document
     if @c.clip_count > 1
       comment_vxml = '<audio src="./wav/ja/m018.wav"/><audio src="./wav/ja/m033.wav"/>'
-      # <!-- 声が大きすぎて音が割れています --><!-- 033 受話器に口を近づけすぎないで -->
+      # <!-- otoga ookisugi masu --><!-- juwaki ni chikazuki suginaide -->
     else
       comment_vxml = '<audio src="./wav/ja/m017.wav"/>'
-      # <!-- お疲れさまでした -->
+      # <!-- otsukare sama deshita -->
     end
     return (<<"EOD") 
 <vxml version="2.0" xmlns="http://www.w3.org/2001/vxml">
@@ -134,15 +134,15 @@ EOD
 <field name="cmd" type="digits?length=1">
  <prompt bargein="true" timeout="10s">
   <audio src="./wav/ja/ok.wav"/>
-  <audio src="./wav/ja/m016.wav"/> <!-- あなたの録音が登録されました -->
-  <audio src="./wav/ja/m010.wav"/> <!-- 再生します -->
+  <audio src="./wav/ja/m016.wav"/> <!-- anata no rokuon ga touroku saremashita -->
+  <audio src="./wav/ja/m010.wav"/> <!-- saisei shimasu -->
   <audio src="./wav/ja/sin.wav"/>  
   <audio src="#{@c.http_wave_file}"/>
   <audio src="./wav/ja/sin.wav"/>  
-  <audio src="./wav/ja/t1002.wav"/> <!-- 録音時間は -->
-  <audio src="#{@length_wave_file}"/> <!-- 約xxxでした -->
+  <audio src="./wav/ja/t1002.wav"/> <!-- rokuon jikan wa -->
+  <audio src="#{@length_wave_file}"/> <!-- yaku xxx deshita -->
   #{comment_vxml}
-  <audio src="./wav/ja/m109.wav"/> <!-- 取り直すときは＃を。終了するときは受話器を -->
+  <audio src="./wav/ja/m109.wav"/> <!-- torinaosu tokiwa sharp wo .. -->
   <audio src="./wav/ja/wait.wav"/>
  </prompt>
  <catch event="nomatch"><assign name="cmd" expr="'nomatch'"/></catch>
