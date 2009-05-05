@@ -1,11 +1,11 @@
 #!/usr/bin/ruby -Ku
 # coding: utf-8
-# $Id: index.cgi,v 1.2 2009/04/15 03:40:29 nishi Exp $
+# $Id: index.cgi,v 1.5 2009/04/27 07:55:32 nishi Exp $
 # (c) Takuya NISHIMOTO 
 #
 # [setup]
 # $ sudo apt-get install sox libsox-fmt-all
-# $ mkdig msg; chmod 777 msg
+# $ mkdir msg; chmod 777 msg
 
 require 'cgi'
 require 'erb'
@@ -56,7 +56,7 @@ class VxmlView < View
     else
       f = "t1140"
     end
-    "./wav/#{f}.wav"
+    "./wav/ja/#{f}.wav"
   end
 
   def greeting_document
@@ -89,10 +89,10 @@ EOD
 <var name="create"   expr="'1'"/>
 <block>
  <prompt bargein="false">
- <audio src="./wav/m106.wav"/> <!-- これからあなたの -->
- <audio src="./wav/m107.wav"/> <!-- 喋り終わったら＃を -->
+ <audio src="./wav/ja/m106.wav"/> <!-- これからあなたの -->
+ <audio src="./wav/ja/m107.wav"/> <!-- 喋り終わったら＃を -->
  take #{@c.rectake}
- <audio src="./wav/m108.wav"/> <!-- では、録音します。3,2,1 -->
+ <audio src="./wav/ja/m108.wav"/> <!-- では、録音します。3,2,1 -->
  </prompt>
 </block>
 <record name="msg" 
@@ -101,7 +101,7 @@ EOD
 </record>
 <block>
  <prompt bargein="false">
- <audio src="./wav/sin.wav"/>
+ <audio src="./wav/ja/sin.wav"/>
  </prompt>
 </block>
 <block>
@@ -116,10 +116,10 @@ EOD
   
   def recording_end_document
     if @c.clip_count > 1
-      comment_vxml = '<audio src="./wav/m018.wav"/><audio src="./wav/m033.wav"/>'
+      comment_vxml = '<audio src="./wav/ja/m018.wav"/><audio src="./wav/ja/m033.wav"/>'
       # <!-- 声が大きすぎて音が割れています --><!-- 033 受話器に口を近づけすぎないで -->
     else
-      comment_vxml = '<audio src="./wav/m017.wav"/>'
+      comment_vxml = '<audio src="./wav/ja/m017.wav"/>'
       # <!-- お疲れさまでした -->
     end
     return (<<"EOD") 
@@ -133,24 +133,24 @@ EOD
 <var name="rectake"  expr="'#{@c.rectake}'"/>
 <field name="cmd" type="digits?length=1">
  <prompt bargein="true" timeout="10s">
-  <audio src="./wav/ok.wav"/>
-  <audio src="./wav/m016.wav"/> <!-- あなたの録音が登録されました -->
-  <audio src="./wav/m010.wav"/> <!-- 再生します -->
-  <audio src="./wav/sin.wav"/>  
+  <audio src="./wav/ja/ok.wav"/>
+  <audio src="./wav/ja/m016.wav"/> <!-- あなたの録音が登録されました -->
+  <audio src="./wav/ja/m010.wav"/> <!-- 再生します -->
+  <audio src="./wav/ja/sin.wav"/>  
   <audio src="#{@c.http_wave_file}"/>
-  <audio src="./wav/sin.wav"/>  
-  <audio src="./wav/t1002.wav"/> <!-- 録音時間は -->
+  <audio src="./wav/ja/sin.wav"/>  
+  <audio src="./wav/ja/t1002.wav"/> <!-- 録音時間は -->
   <audio src="#{@length_wave_file}"/> <!-- 約xxxでした -->
   #{comment_vxml}
-  <audio src="./wav/m109.wav"/> <!-- 取り直すときは＃を。終了するときは受話器を -->
-  <audio src="./wav/wait.wav"/>
+  <audio src="./wav/ja/m109.wav"/> <!-- 取り直すときは＃を。終了するときは受話器を -->
+  <audio src="./wav/ja/wait.wav"/>
  </prompt>
  <catch event="nomatch"><assign name="cmd" expr="'nomatch'"/></catch>
  <catch event="noinput"><assign name="cmd" expr="'noinput'"/></catch>
  <catch event="help"><assign name="cmd" expr="'help'"/></catch>
 </field>
 <block>
- <audio src="./wav/ok.wav"/>   
+ <audio src="./wav/ja/ok.wav"/>   
  <submit next="#{@c.self_url}"
   method="post"
   namelist="format nextdoc phonenum datetime rectake cmd"/>
@@ -291,8 +291,8 @@ class Controller
   def initialize
     @cgi = CGI.new
     @self_url = 'index.cgi'
-    @msg_url_prefix = 'http://localhost/mmm/msg/'
-    @msg_local_dir = '/var/www/mmm/msg'
+    @msg_url_prefix = 'http://hil.t.u-tokyo.ac.jp/~nishi/mmm/ruby-cgi/msg/'
+    @msg_local_dir = '/home/nishi/public_html/mmm/ruby-cgi/msg'
     @bin_dir = '/home/nishi/bin'
   end
   
