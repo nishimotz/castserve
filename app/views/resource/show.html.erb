@@ -1,4 +1,26 @@
 <h1>Resource Property</h1>
+
 <table cellspacing="1" border="0">
 <tr><th>title</th> <td><%= @resource.title %></td></tr>
+<tr><th>item_count</th> <td><%= @resource.item_count %></td></tr>
 </table>
+
+<h2>Items</h2>
+
+<table cellspacing="1" border="0">
+<tr>
+<th>title</th>
+<th>pubDate</th>
+<th>enclosure.type</th>
+<th>enclosure.url</th>
+</tr>
+<% @items.each do |i| -%>
+<tr>
+<td><%= i.title %></td>
+<td><%= i.pubDate %></td>
+<td><%= i.enclosure.type %></td>
+<td><%= i.enclosure.url %></td>
+</tr>
+<% end -%>
+</table>
+

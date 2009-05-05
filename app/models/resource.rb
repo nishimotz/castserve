@@ -17,4 +17,8 @@ class Resource < ActiveRecord::Base
     rss = RSS::Parser.parse(location, false)
     rss.channel.items
   end
+  
+  def item_count
+    items.length
+  end
 end

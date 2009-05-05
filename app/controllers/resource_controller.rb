@@ -5,6 +5,7 @@ class ResourceController < ApplicationController
   
   def show
     @resource = Resource.find(params[:id])
+    @items = @resource.items
   end
   
   def new
