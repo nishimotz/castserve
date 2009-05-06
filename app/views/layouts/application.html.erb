@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<table class="style_table" cellspacing="1" border="0">
+<table cellspacing="1" border="0">
 <tr>
 <td>
 <%= link_to 'CastStudio Server', :controller => 'home', :action => 'index' %>
@@ -34,12 +34,18 @@
 </td>	
 <% if logged_in? -%>
 <td>
+station: <%= @current_station %>
+</td>
+<td>
 user: <%= @user %>
 </td>
 <td>
 <%= button_to 'logout', :controller => 'sessions', :action => 'destroy' %>
 </td>
 <% else -%>
+<td>
+station: -
+</td>
 <td>
 <%   form_tag({ :controller => 'sessions', :action => 'create' },
   { :multipart => true }) do -%>

@@ -6,6 +6,7 @@ class StationController < ApplicationController
 
   def show_station
     @station = Station.find(params[:id])
+    session[:current_station] = @current_station = @station.number
   end
 
 end
