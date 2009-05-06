@@ -4,14 +4,16 @@
 # causes Unknown action
 # No action responded to show
 %>
-
+<h1>Mediaitem new</h1>
 <% form_for :mediaitem, @mediaitem,
     :url => { :action => 'create' },
     :html => { :multipart => true } do |form| %>
-<p>Station: <%= form.text_field :station %></p>
-<p>Title:   <%= form.text_field :title %></p>
-<p>Desc:    <%= form.text_field :desc %></p>
-<p>Author:  <%= form.text_field :author %></p>
-<p>File:    <%= form.file_field :uploaded_audio %></p>
-<%= submit_tag 'update' %>
+<table cellspacing="1" border="0">
+<tr><th>Station</th><td> <%= form.text_field :station %></td></tr>
+<tr><th>Title</th><td>   <%= form.text_field :title %></td></tr>
+<tr><th>Desc</th><td>    <%= form.text_field :desc %></td></tr>
+<tr><th>Author</th><td>  <%= form.text_field :author %></td></tr>
+<tr><th>File</th><td>    <%= form.file_field :uploaded_audio %></td></tr>
+<tr><th>-</th> <td><%= submit_tag 'update' %></td></tr>
+</table>
 <% end %>
