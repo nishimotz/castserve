@@ -1,8 +1,8 @@
 require 'time'
-require 'mmm/wave_utils'
+#require 'mmm/wave_utils'
 
 class MediaitemController < ApplicationController
-  include WaveUtils
+  #include WaveUtils
   
   def index
     if params[:station]
@@ -24,7 +24,9 @@ class MediaitemController < ApplicationController
     @ch_category = 'CastStudio'
     @ttl = 90
     
-    @items = Mediaitem.find_all_by_station(num)
+    # @items = Mediaitem.find_all_by_station(num)
+    @items = Mediaitem.find(:all, :conditions => {:station => num })
+    # , :item_type => 'message'
   end
   
   def new

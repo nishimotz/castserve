@@ -11,7 +11,7 @@ class StickerController < ApplicationController
     @ttl = 90
     
     #@items = Mediaitem.find_all_by_station(num)
-    @items = Mediaitem.find(:all, :conditions => {:station => num })
+    @items = Mediaitem.find(:all, :conditions => {:station => num, :item_type => 'sticker' })
   end
   
   def show

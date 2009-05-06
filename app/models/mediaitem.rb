@@ -14,7 +14,7 @@ class Mediaitem < ActiveRecord::Base
   end
   
   def category
-    'message'
+    item_type # 'message'
   end
   
   def filename_without_ext
