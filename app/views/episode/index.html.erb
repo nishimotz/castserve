@@ -1,18 +1,12 @@
 <h1>Episode List: station <%= @current_station %></h1>
 <table cellspacing="1" border="0">
 <tr><th>episodes</th><th>cast</th></tr>
+<% @episodes.each do |i| %>
 <tr>
-<td><%=link_to 'episode-2009-04-24', :action => 'show', :id => 1 %></td>
+<td><%=link_to i.title, :action => 'show', :id => i.id %></td>
 <td><%= link_to 'cast', :controller => 'caststudio', :action => 'run', 
   :format => 'jnlp', :s => @current_station %>
 </td>
 </tr>
-<tr>
-<td>episode-2009-04-25</td>
-<td>cast </td>
-</tr>
-<tr>
-<td>episode-2009-04-26</td>
-<td>cast </td>
-</tr>
+<% end %>
 </table>
