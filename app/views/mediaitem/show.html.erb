@@ -1,6 +1,19 @@
 <h1>MediaItem Property</h1>
 <table cellspacing="1" border="0">
-<tr><th>title</th> <td><%= @item.title %></td></tr>
+<tr>
+<td>
+<%=link_to 'index', :action=>:index, :id=>@item.id %>
+</td>	
+<td>
+<%=link_to 'edit', :action=>:edit, :id=>@item.id %>
+</td>	
+</tr>
+</table>
+
+<table cellspacing="1" border="0">
+<tr><th>title</th> <td><%= @item.title %>
+</td>
+</tr>
 <tr><th>link</th>  <td><%= url_for :controller => 'caststudio', :action => 'rpc', :only_path => false %></td></tr>
 <tr><th>description</th> <td> <%= @item.desc %></td></tr>
 <tr><th>pubDate</th> <td> <%= @item.pubdate %></td></tr>

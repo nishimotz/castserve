@@ -46,7 +46,16 @@ class MediaitemController < ApplicationController
   
   def show
     @item = Mediaitem.find(params[:id])
-    # @infos = @item.mediaiteminfo
+  end
+  
+  def edit
+    @item = Mediaitem.find(params[:id])
+  end
+  
+  def update
+    id = params[:id]
+    flash[:notice] = 'update OK.'
+    redirect_to :action => :show, :id => id
   end
   
 end
