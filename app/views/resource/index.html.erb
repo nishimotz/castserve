@@ -2,6 +2,12 @@
 <%= link_to 'new', :action => 'new'%>
 
 <table cellspacing="1" border="0">
+	<tr>
+		<th>title</th>
+		<th>location</th>
+		<th>update</th>
+		<th>item_count</th>
+	</tr>
 <% @resources.each do |i| -%>
 <tr>
 <td> <a href="<%=url_for :action => :show, :id => i.id %>"><%= i.title %></a> </td>
