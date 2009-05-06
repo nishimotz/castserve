@@ -1,5 +1,6 @@
 # http://groups.google.co.jp/group/comp.lang.ruby/browse_thread/thread/e4ffdc9226489861
 require 'uri'
+require 'lib/mmm/wave_utils'
 
 class ResourceController < ApplicationController
   def index
@@ -18,14 +19,20 @@ class ResourceController < ApplicationController
   def import
     uri = URI.parse(params[:import_url])
     http = Net::HTTP.new(uri.host, uri.port)
-    filename = File.basename(uri.path)
+    # "path/to/foobar.wav" => "foobar_org.wav"
+    filename_org = File.basename(uri.path, ".*") + "_org" + File.extname(uri.path)
+    filename     = File.basename(uri.path)
     http.start do
       http.request_get(uri.path) do |res|
-        File.open("public/audio/" + filename, 'wb') do |f|
+        File.open(RAILS_ROOT + "/public/audio/" + filename_org, 'wb') do |f|
           f.write(res.body)
         end
       end
     end
+    # convert filename_org => filename
+    WaveUtils.wav_to_linear(RAILS_ROOT + "/public/audio/" + filename_org, 
+      RAILS_ROOT + "/public/audio/" + filename)
+    # add to Mediaitem
     mediaitem = Mediaitem.new
     mediaitem.station = "77735"
     mediaitem.filepath = filename
