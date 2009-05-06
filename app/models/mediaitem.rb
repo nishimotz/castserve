@@ -17,6 +17,10 @@ class Mediaitem < ActiveRecord::Base
     item_type # 'message'
   end
   
+  def category=(c)
+    self.item_type = c
+  end
+  
   def filename_without_ext
     filepath.gsub(/\.wav$/, '')
   end

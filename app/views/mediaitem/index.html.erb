@@ -1,20 +1,25 @@
 <h1>MediaItem List </h1>
-<%= link_to 'new', :action => 'new'%>
+<table class="style_table" cellspacing="1" border="0">
+<tr><td><%= link_to 'new', :action => 'new'%></td></tr>
+</table>
 
-<ul>
-<li> Title: <%= @title %>
-<li> Link: <%= url_for :controller => 'caststudio', :action => 'rpc', :only_path => false %>
-<li> Description: <%= @description %>
-<li> Language: <%= @language %>
-<li> PubDate: <%= @pubdate %>
-<li> Category: <%= @ch_category %>
-</ul>
+<table class="style_table" cellspacing="1" border="0">
+<tr><th> Title</th><td> <%= @title %> </td></tr>
+<% if false %>
+<tr><th> Link</th><td> <%= url_for :controller => 'caststudio', :action => 'rpc', :only_path => false %></td></tr>
+<tr><th> Description</th><td> <%= @description %></td></tr>
+<tr><th> Language</th><td> <%= @language %></td></tr>
+<tr><th> PubDate</th><td> <%= @pubdate %></td></tr>
+<tr><th> Category</th><td> <%= @ch_category %></td></tr>
+<% end %>
+</table>
 
 <table class="style_table" cellspacing="1" border="0">
 <tr><th class="style_th">title</th>
 <th class="style_th">author</th>
 <th class="style_th">desc</th>
 <th class="style_th">date</th>
+<th class="style_th">category</th>
 </tr>
 <% @items.each do |i| -%>
 <tr>
@@ -24,6 +29,7 @@
 <td class="style_td"> <%= i.author %></td>
 <td class="style_td"> <%= i.desc %></td>
 <td class="style_td"> <%= i.pubdate %></td>
+<td class="style_td"> <%= i.category %></td>
 <!--
 <td> link <%= url_for :controller => 'caststudio', :action => 'rpc', :only_path => false %>
 </td>
