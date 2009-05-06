@@ -8,6 +8,7 @@ item1:
   desc: 補足１
   author: 発言者１
   filepath: FAK_3Z82A.wav
+  item_type: 'message'
   
 item2:
   station: 77735
@@ -15,6 +16,7 @@ item2:
   desc: 補足２
   author: 発言者２
   filepath: FAP_43O6571A.wav
+  item_type: 'message'
 
 item3:
   station: 77735
@@ -22,4 +24,12 @@ item3:
   desc: 補足3
   author: 発言者3
   filepath: FAP_43O6571A_ST.wav
-  
+  item_type: 'message'
+
+item4:
+  station: 77735
+  title: boku-orabe
+  desc: boku-orabe
+  author: irusu
+  filepath: 13-boku-orabe_fin.wav 
+  item_type: 'sticker'
