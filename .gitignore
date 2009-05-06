@@ -1,1 +1,5 @@
 CVS
+*~
+*.sqlite3
+log
+public/audio
