@@ -12,6 +12,7 @@
 
 <table class="style_table" cellspacing="1" border="0">
 <tr><th class="style_th">title</th>
+<th class="style_th">author</th>
 <th class="style_th">desc</th>
 <th class="style_th">date</th>
 </tr>
@@ -20,6 +21,7 @@
 <td class="style_td"> 
 <%= link_to i.title, :action => 'show', :id => i.id %>
 </td>
+<td class="style_td"> <%= i.author %></td>
 <td class="style_td"> <%= i.desc %></td>
 <td class="style_td"> <%= i.pubdate %></td>
 <!--

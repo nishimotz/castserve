@@ -54,6 +54,8 @@ class MediaitemController < ApplicationController
   
   def update
     id = params[:id]
+    @item = Mediaitem.find_by_id(id)
+    @item.update_attributes(params[:item])
     flash[:notice] = 'update OK.'
     redirect_to :action => :show, :id => id
   end
