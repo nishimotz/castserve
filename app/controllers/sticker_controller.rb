@@ -10,7 +10,8 @@ class StickerController < ApplicationController
     @ch_category = 'CastStudio'
     @ttl = 90
     
-    @items = Mediaitem.find_all_by_station(num)
+    #@items = Mediaitem.find_all_by_station(num)
+    @items = Mediaitem.find(:all, :conditions => {:station => num })
   end
   
   def show
