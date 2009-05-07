@@ -1,6 +1,6 @@
 #!/usr/bin/ruby -Ku
 # coding: utf-8
-# $Id: index.cgi,v 1.5 2009/04/27 07:55:32 nishi Exp $
+# $Id: index.cgi,v 1.7 2009/05/07 02:13:41 nishi Exp $
 # (c) Takuya NISHIMOTO 
 #
 # [setup]
@@ -140,7 +140,7 @@ EOD
   <audio src="#{@c.http_wave_file}"/>
   <audio src="./wav/ja/sin.wav"/>  
   <audio src="./wav/ja/t1002.wav"/> <!-- rokuon jikan wa -->
-  <audio src="#{@length_wave_file}"/> <!-- yaku xxx deshita -->
+  <audio src="#{self.length_wave_file}"/> <!-- yaku xxx deshita -->
   #{comment_vxml}
   <audio src="./wav/ja/m109.wav"/> <!-- torinaosu tokiwa sharp wo .. -->
   <audio src="./wav/ja/wait.wav"/>
@@ -331,6 +331,7 @@ class Controller
       @original_filename = @cgi['msg'].original_filename
       raise "CGI submit with empty file" if @original_filename == ''
       ext = File.extname(@original_filename) #=> ".wav"
+      if ext == nil or ext == '' then ext = '.wav' end
       file_name = "msg#{@datetime}_rev#{@rectake}#{ext}"
       local_wave_file = "./msg/#{file_name}"
       @http_wave_file = "./msg/#{file_name}"
