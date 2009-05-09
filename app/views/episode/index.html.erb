@@ -1,15 +1,15 @@
 <% if @current_station %>
-<%   station = 'station ' + @current_station %>
+<%   station_info = 'station ' + @current_station %>
 <% else %>
-<%   station = 'no station selected!!' %>
+<%   station_info = 'no station selected!!' %>
 <% end %>
-<h1>Episode List: <%= station %></h1>
+<h1>Episode List: <%= station_info %></h1>
 
 <!-- layout --><table class="layout" cellspacing="1" border="0">
 <!-- layout --><tr><td class="layout">
 
 <table cellspacing="1" border="0">
-<tr><td><%= link_to 'new', :action=>:new %></td></tr>
+<tr><td><%= link_to 'new episode', :action=>:new %></td></tr>
 </table>
 
 <!-- layout --></td><td class="layout">

@@ -1,0 +1,26 @@
+<h1>New Episode : station <%= @current_station %></h1>
+
+<!-- layout --><table class="layout" cellspacing="1" border="0">
+<!-- layout --><tr><td class="layout">
+
+<table cellspacing="1" border="0">
+<tr><td>
+<%= link_to 'index', :action=>:index %>
+</td></tr>
+</table>
+
+<!-- layout --></td><td class="layout">
+
+<% form_for :item, @item, :url => { :action => :create, :id=>@item } do |f| %>
+
+<table cellspacing="1" border="0">
+<tr><th>station</th>
+<td><%= f.text_field :station %></td></tr>
+<tr><th>episode title</th>
+<td><%= f.text_field :title %></td></tr>
+<tr><th>-</th><td><%= submit_tag 'Create' %></td></tr>
+</table>
+
+<% end %>
+
+<!-- layout --></td></tr></table>

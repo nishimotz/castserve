@@ -12,6 +12,6 @@ class EpisodeController < ApplicationController
 
   def create
     flash[:notice] = 'new episode created'
-    redirect_to :action=>:show
+    redirect_to :action=>:index
   end
 end
