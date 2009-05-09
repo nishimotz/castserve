@@ -40,6 +40,7 @@
 <th>desc</th>
 <th>date</th>
 <th>category</th>
+<th>num_ep</th>
 </tr>
 <% @items.each do |i| -%>
 <tr>
@@ -53,6 +54,7 @@
 <td> <%= i.desc %></td>
 <td> <%= i.pubdate %></td>
 <td> <%= i.category %></td>
+<td> <%= i.episodes.size %></td>
 </tr>
 <% end -%>
 </table>
