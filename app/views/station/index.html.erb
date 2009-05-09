@@ -14,23 +14,23 @@
 <% @stations.each do |s| -%>
 <tr>
 <td>
-<%= link_to s.number, :action => 'show_station', :id => s.id  %>
+<%= link_to s.number, :action=>:show_station, :id=>s.id %>
 </td>
 <td>
-<%= link_to s.title, :action => 'show_station', :id => s.id  %>
+<%= link_to s.title, :action=>:show_station, :id=>s.id %>
 </td>
 <td>
-<%= link_to 'episodes', :controller => 'episode', :station_id => s.id  %>
+<%= link_to 'episodes', :controller=>:episode, :station_id=>s.id  %>
 </td>
 <td>
-<%= link_to 'resources', :controller => 'resource', :station_id => s.id  %>
+<%= link_to 'resources', :controller=>:resource, :station_id=>s.id  %>
 </td>
 <td>
-<%= link_to 'stickers', :controller => 'sticker', :station_id => s.id  %>
+<%= link_to 'stickers', :controller=>:sticker, :station_id=>s.id  %>
 </td>
 <td>
-<%= link_to 'cast', :controller => 'caststudio', :action => 'run', 
-  :format => 'jnlp', :s => s.number %>
+<%= link_to 'cast', :controller=>:caststudio, :action=>:run, 
+  :format=>:jnlp, :s=>s.number %>
 </td>
 </tr>
 <% end -%>
