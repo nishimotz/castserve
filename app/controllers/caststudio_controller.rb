@@ -15,10 +15,13 @@ class CaststudioController < ApplicationController
     when 'get_shape'
       f = params[:f]
       params[:format] = 'shape'
+      @shape_array = Mediaitemshape.find(:all, :conditions=>{:mediaitem_id=>mediaitem_id}, :order=>:pos)
+      headers['Content-Type'] = 'text/plain'
       # views/caststudio/rpc.shape.erb
     when 'show_info'
       params[:format] = 'info'
       @info = Mediaiteminfo.find_by_mediaitem_id_and_user_id(mediaitem_id, user_id)
+      headers['Content-Type'] = 'text/plain'
       # views/caststudio/rpc.info.erb
     when 'save_info'
       info = Mediaiteminfo.find_by_mediaitem_id_and_user_id(mediaitem_id, user_id)

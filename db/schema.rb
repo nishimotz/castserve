@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 10) do
+ActiveRecord::Schema.define(:version => 11) do
 
   create_table "channels", :force => true do |t|
     t.string   "number"
@@ -62,6 +62,15 @@ ActiveRecord::Schema.define(:version => 10) do
   create_table "mediaitems_users", :id => false, :force => true do |t|
     t.integer  "mediaitem_id"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "mediaitemshapes", :force => true do |t|
+    t.integer  "mediaitem_id"
+    t.integer  "pos"
+    t.integer  "low_value"
+    t.integer  "high_value"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

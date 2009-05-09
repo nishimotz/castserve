@@ -1,0 +1,61 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+d0:
+  mediaitem_id: 1000001
+  pos: 0
+  low_value: -930
+  high_value: 857
+
+d1:
+  mediaitem_id: 1000001
+  pos: 1
+  low_value: -1169 
+  high_value: 1388
+
+d2:
+  mediaitem_id: 1000001
+  pos: 2
+  low_value: -1427 
+  high_value: 1244
+
+d3:
+  mediaitem_id: 1000001
+  pos: 3
+  low_value: -1830 
+  high_value: 2974
+
+d4:
+  mediaitem_id: 1000001
+  pos: 4
+  low_value: -2339 
+  high_value: 4013
+
+d5:
+  mediaitem_id: 1000001
+  pos: 5
+  low_value: -930 
+  high_value: 857
+
+d6:
+  mediaitem_id: 1000001
+  pos: 6
+  low_value: -930 
+  high_value: 857
+
+d7:
+  mediaitem_id: 1000001
+  pos: 7
+  low_value: -1427 
+  high_value: 1244
+
+d8:
+  mediaitem_id: 1000001
+  pos: 8
+  low_value: -1830 
+  high_value: 2974
+
+d9:
+  mediaitem_id: 1000001
+  pos: 9
+  low_value: -2339 
+  high_value: 4013

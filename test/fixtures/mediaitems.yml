@@ -3,6 +3,7 @@
 # rake db:fixtures:load
 
 item1:
+  id: 1000001
   station: 77735
   title: タイトル１
   desc: 補足１
