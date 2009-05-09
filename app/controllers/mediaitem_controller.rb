@@ -9,6 +9,7 @@ class MediaitemController < ApplicationController
     @items = Mediaitem.find(:all, :conditions => {:item_type => 'message' })
     # for radio_button_tag
     @episodes = Episode.find(:all, :conditions => {:station=>@current_station})
+    # @episodes = Episode.find(:all)
     @episodes.each_with_index do |i, idx|
       def i.selected=(b)
         @selected = b

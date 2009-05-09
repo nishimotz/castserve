@@ -28,6 +28,8 @@ url="<%= url_for :controller => 'audio', :action => @item.filename_without_ext, 
 length="0" 
 type="<%= @item.filetype %>"
 </td></tr> 
+<tr><th>num_frames</th><td> <%= @item.mediaitemshapes.size %></td></tr>
+
 </table>
 
 <!-- layout --></td></tr></table>

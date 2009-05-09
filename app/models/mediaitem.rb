@@ -3,6 +3,7 @@
 class Mediaitem < ActiveRecord::Base
   has_and_belongs_to_many :episodes
   has_and_belongs_to_many :mediaiteminfos
+  has_many :mediaitemshapes
 
   #def link
   #  'http://localhost:3000/caststudio/rpc'
