@@ -37,7 +37,7 @@
 <% @items.each do |i| -%>
 <tr>
 <td>
-<%= check_box :item, :selected %>
+<%= check_box_tag 'target[]', i.id, @target[i.id] %>
 </td>
 <td> 
 <%= link_to i.title, :action => 'show', :id => i.id %>

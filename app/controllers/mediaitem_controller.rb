@@ -27,6 +27,10 @@ class MediaitemController < ApplicationController
     # @items = Mediaitem.find_all_by_station(num)
     @items = Mediaitem.find(:all, :conditions => {:station => num })
     # , :item_type => 'message'
+    @target = {}
+    @items.each do |i|
+      @target[i.id] = false
+    end
   end
   
   def new
