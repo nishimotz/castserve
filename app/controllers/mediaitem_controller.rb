@@ -5,6 +5,7 @@ class MediaitemController < ApplicationController
   #include WaveUtils
   
   # from Web Browser : http://ubuntu-vm:3000/mediaitem/
+  # TODO: query by episode_id
   def index
     @items = Mediaitem.find(:all, :conditions => {:item_type => 'message' })
     # for radio_button_tag
@@ -17,10 +18,12 @@ class MediaitemController < ApplicationController
       def i.selected?
         @selected
       end
+      # TODO: station should remember default episode
       i.selected = false
       i.selected = true if idx == (@episodes.length - 1)
     end
     # for check_box_tag
+    # TODO: show items registered already 
     @target = {}
     @items.each do |i|
       @target[i.id] = false
@@ -64,7 +67,11 @@ class MediaitemController < ApplicationController
     episode = Episode.find(params[:episode_id])
     params[:target_id].each do |id|
       mi = Mediaitem.find(id)
-      mi.episodes.push episode
+      begin
+        mi.episodes.push episode
+      rescue
+        # already added
+      end
       #mi.save!
       #ep = Episode.find(params[:episode_id])
       #ep.mediaitem_ids.push episode_id 
