@@ -78,7 +78,7 @@ class MediaitemController < ApplicationController
       #ep.save!
     end
     flash[:notice] = 'mediaitems are added to episode.'
-    redirect_to :controller=>:episode, :action =>:show, :id=>episode.id 
+    redirect_to :controller=>:episode, :action=>:show, :id=>episode.id 
   end
   
 end
