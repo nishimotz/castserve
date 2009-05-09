@@ -1,7 +1,8 @@
 class StickerController < ApplicationController
   def index
     num = '77735' # default
-    ch = Channel.find_by_number(num)
+    #ch = Channel.find_by_number(num)
+    ch = Station.find_by_number(num)
     @title = ch.title
     #@link = 'http://localhost:3000/caststudio/rpc'
     @description = 'CastStudio'

@@ -18,7 +18,8 @@ class MediaitemController < ApplicationController
     #else
     #  uid = '101'
     #end
-    ch = Channel.find_by_number(num)
+    #ch = Channel.find_by_number(num)
+    ch = Station.find_by_number(num)
     @title = ch.title
     #@link = 'http://localhost:3000/caststudio/rpc'
     @description = 'CastStudio'

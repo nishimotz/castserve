@@ -1,7 +1,7 @@
 <rss version="2.0">
 <channel>
 <title><%= @title %></title>
-<link><%= url_for :controller => 'caststudio', :action => 'rpc', :only_path => false %></link>
+<link><%= url_for :controller=>:caststudio, :action=>:rpc, :only_path=>false %></link>
 <description><%= @description %></description>
 <language><%= @language %></language>
 <pubDate><%= @pubdate %></pubDate>
@@ -12,13 +12,13 @@
 <% @items.each do |i| -%>
 <item>
 <title><%= i.title %></title>
-<link><%= url_for :controller => 'caststudio', :action => 'rpc', :only_path => false %></link>
+<link><%= url_for :controller=>:caststudio, :action=>:rpc, :only_path=>false %></link>
 <description><%= i.desc %></description>
 <pubDate><%= i.pubdate %></pubDate>
 <author><%= i.author %></author>
 <category><%= i.category %></category>
-<enclosure url="<%= url_for :controller => 'audio', :action => i.filename_without_ext, 
-    :format => 'wav', :only_path => false %>" length="0" type="<%= i.filetype %>" />
+<enclosure url="<%= url_for :controller=>:audio, :action=>i.filename_without_ext, 
+    :format=>:wav, :only_path=>false %>" length="0" type="<%= i.filetype %>" />
 </item>
 <% end -%>
 
