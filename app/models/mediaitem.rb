@@ -32,8 +32,7 @@ class Mediaitem < ActiveRecord::Base
   end
   
   def uploaded_audio=(audio)
-    if audio.respond_to?(:content_type) and
-      audio.content_type.match(/^audio\b/)
+    if audio.respond_to?(:content_type) and audio.content_type.match(/^audio\b/)
       tstamp = Time.now.getutc.strftime("%Y%m%d-%H%M%S") + sprintf("-%04x", rand(0x10000))
       filepath = "mediaitem-#{tstamp}.wav"
       File.open("public/audio/" + filepath,"wb") do |file|
@@ -41,5 +40,9 @@ class Mediaitem < ActiveRecord::Base
       end
       self.filepath = filepath
     end
+  end
+
+  def update_shape
+    # TODO
   end
 end

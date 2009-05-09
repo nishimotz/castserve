@@ -40,10 +40,10 @@ class MediaitemController < ApplicationController
     @mediaitem = Mediaitem.new(params[:mediaitem])
     if @mediaitem.save
       flash[:notice] = 'create OK.'
-      redirect_to :action => :show, :id => @mediaitem
+      redirect_to :action=>:show, :id=>@mediaitem
     else
       flash[:notice] = 'create Error.'
-      render :action => 'new'
+      render :action=>:new
     end
   end
   
@@ -60,7 +60,7 @@ class MediaitemController < ApplicationController
     @item = Mediaitem.find_by_id(id)
     @item.update_attributes(params[:item])
     flash[:notice] = 'update OK.'
-    redirect_to :action => :show, :id => id
+    redirect_to :action=>:show, :id=>id
   end
 
   def add_to_episode
@@ -80,5 +80,12 @@ class MediaitemController < ApplicationController
     flash[:notice] = 'mediaitems are added to episode.'
     redirect_to :controller=>:episode, :action=>:show, :id=>episode.id 
   end
-  
+
+  def update_shape
+    mediaitem = Mediaitem.find_by_id(params[:id])
+    mediaitem.update_shape
+    flash[:notice] = '(dummy) mediaitemshape updated.'
+    redirect_to :action=>:show, :id=>mediaitem.id
+  end
+
 end
