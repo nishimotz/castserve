@@ -1,9 +1,13 @@
 <h1>Sticker List </h1>
+
+<!-- layout --><table class="layout" cellspacing="1" border="0">
+<!-- layout --><tr><td class="layout">
 <table class="style_table" cellspacing="1" border="0">
 <tr>
 <td><%= link_to 'new', :action => 'new'%></td>
 </tr>
 </table>
+<!-- layout --></td><td class="layout">
 
 <table class="style_table" cellspacing="1" border="0">
 <tr><th> Title</th><td> <%= @title %></td></tr>
@@ -18,18 +22,21 @@
 
 <h2>Sticker Items</h2>
 
-<table class="style_table" cellspacing="1" border="0">
-<tr><th class="style_th">title</th>
-<th class="style_th">desc</th>
-<th class="style_th">date</th>
+<table cellspacing="1" border="0">
+<tr><th>title</th>
+<th>desc</th>
+<th>date</th>
+<th>num_ep</th>
 </tr>
 <% @items.each do |i| -%>
 <tr>
-<td class="style_td"> 
+<td> 
 <%= link_to i.title, :action => 'show', :id => i.id %>
 </td>
-<td class="style_td"> <%= i.desc %></td>
-<td class="style_td"> <%= i.pubdate %></td>
+<td> <%= i.desc %></td>
+<td> <%= i.pubdate %></td>
+<td> <%= i.episodes.size %></td>
 </tr>
 <% end -%>
 </table>
+<!-- layout --></td></tr></table>
