@@ -3,16 +3,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-<title>CastStudio <%= controller.action_name %></title>
+<title>CastStudio <%= controller.controller_name %> <%= controller.action_name %></title>
 <%= stylesheet_link_tag 'pc.css' %>
-<!-- link rel="stylesheet" type="text/css" href="/stylesheets/pc.css" -->
 </head>
 <body>
 
 <table cellspacing="1" border="0">
 <tr>
 <td>
-<%= link_to 'CastStudio Server', :controller => 'home', :action => 'index' %>
+<%=link_to "O'ra-be home", :controller => 'home', :action => 'index' %>
 </td>
 <td>
 <%=link_to 'stations', :controller => 'station'%>

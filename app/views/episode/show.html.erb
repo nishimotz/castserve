@@ -3,19 +3,26 @@
 <!-- layout --><table class="layout" cellspacing="1" border="0">
 <!-- layout --><tr><td class="layout">
 <table cellspacing="1" border="0">
-<tr><td>
-<%= link_to 'index', :action=>:index %>
-</td></tr>
+<tr><td><%= link_to 'index', :action=>:index %></td></tr>
+<tr><td><%= link_to 'edit', :action=>:edit %></td></tr>
 </table>
 <!-- layout --></td><td class="layout">
 
+<h2>Episode</h2>
 <table cellspacing="1" border="0">
-	<tr><th>media items of episode-2009-04-24</th></tr>
-	<tr><td><%=link_to 'sent by nishimotz 2009-04-20', 
-			:controller => 'mediaitem', :action=>'show', 
-			:id => 608984340 %></td></tr>
-	<tr><td>sent by nishimotz 2009-04-21</td></tr>
-	<tr><td>sent by nishimotz 2009-04-22</td></tr>
+<tr><th>id</th><td><%= @episode.id %></td></tr>
+<tr><th>station</th><td><%= @episode.station %></td></tr>
+<tr><th>title</th><td><%= @episode.title %></td></tr>
+</table>
+
+<h2>Mediaitems</h2>
+<table cellspacing="1" border="0">
+<tr><th>media items of episode-2009-04-24</th></tr>
+<tr><td><%=link_to 'sent by nishimotz 2009-04-20', 
+		:controller => 'mediaitem', :action=>'show', 
+		:id => 608984340 %></td></tr>
+<tr><td>sent by nishimotz 2009-04-21</td></tr>
+<tr><td>sent by nishimotz 2009-04-22</td></tr>
 </table>
 
 <!-- layout --></td></tr></table>
