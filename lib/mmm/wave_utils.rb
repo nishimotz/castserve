@@ -1,3 +1,5 @@
+#!/usr/bin/ruby -Ku
+# -*- coding: utf-8 -*-
 #
 # $ sudo apt-get install sox ffmpeg
 # $ ruby ./script/console 
@@ -9,8 +11,10 @@ module WaveUtils
   SOX_BIN      = "/usr/bin/sox"
   FFMPEG_BIN   = "/usr/bin/ffmpeg"
   MMM_BIN_DIR  = File.dirname(__FILE__) + "/mmmpeak/"
-  MMMPEAK_BIN  = '"' + MMM_BIN_DIR.gsub(/ /, '¥ ') + "mmmpeak"  + '"'
-  MMMSHAPE_BIN = '"' + MMM_BIN_DIR.gsub(/ /, '¥ ') + "mmmshape" + '"'
+  #MMMPEAK_BIN  = '"' + MMM_BIN_DIR.gsub(/ /, '促 ') + "mmmpeak"  + '"'
+  #MMMSHAPE_BIN = '"' + MMM_BIN_DIR.gsub(/ /, '促 ') + "mmmshape" + '"'
+  MMMPEAK_BIN  = MMM_BIN_DIR + "mmmpeak" 
+  MMMSHAPE_BIN = MMM_BIN_DIR + "mmmshape"
   
   def self.wav_to_linear(srcfile, destfile)
     exec = "#{SOX_BIN} #{srcfile} -r 8000 -2 -c 1 #{destfile}"
@@ -26,6 +30,11 @@ module WaveUtils
     ret += `#{exec}`
     FileUtils.chmod(0666, shapefile)
     return ret
+  end
+  
+  def self.wav_to_shape_array(srcfile)
+    exec = "#{SOX_BIN} #{srcfile} -r 8000 -c 1 -t sw - | #{MMMSHAPE_BIN}"
+    `#{exec}`.split(/\n/)
   end
   
   def self.do_mmmpeak(wavfile)
