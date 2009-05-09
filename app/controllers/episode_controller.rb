@@ -5,6 +5,7 @@ class EpisodeController < ApplicationController
   
   def show
     @episode = Episode.find_by_id(params[:id])
+    @mediaitems = @episode.mediaitems
   end
 
   def new

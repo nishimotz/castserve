@@ -1,14 +1,18 @@
 <h1>MediaItem Property</h1>
+
+<!-- layout --><table class="layout" cellspacing="1" border="0">
+<!-- layout --><tr><td class="layout">
+
 <table cellspacing="1" border="0">
-<tr>
-<td>
+<tr><td>
 <%=link_to 'index', :action=>:index, :id=>@item.id %>
-</td>	
-<td>
+</td></tr>
+<tr><td>
 <%=link_to 'edit', :action=>:edit, :id=>@item.id %>
-</td>	
-</tr>
+</td></tr>
 </table>
+
+<!-- layout --></td><td class="layout">
 
 <table cellspacing="1" border="0">
 <tr><th>title</th> <td><%= @item.title %>
@@ -25,3 +29,5 @@ length="0"
 type="<%= @item.filetype %>"
 </td></tr> 
 </table>
+
+<!-- layout --></td></tr></table>

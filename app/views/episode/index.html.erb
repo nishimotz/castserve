@@ -14,12 +14,14 @@
 
 <!-- layout --></td><td class="layout">
 
+<h2>episode list</h2>
 <table cellspacing="1" border="0">
-<tr><th>episodes</th><th>cast</th></tr>
+<tr><th>title</th><th>mediaitems</th><th>cast</th></tr>
 <% @episodes.each do |i| %>
 <tr>
 <td><%=link_to i.title, :action => 'show', :id => i.id %></td>
-<td><%= link_to 'cast', :controller => 'caststudio', :action => 'run', 
+<td><%= i.mediaitems.size %></td>
+<td><%=link_to 'cast', :controller => 'caststudio', :action => 'run', 
   :format => 'jnlp', :s => @current_station %>
 </td>
 </tr>

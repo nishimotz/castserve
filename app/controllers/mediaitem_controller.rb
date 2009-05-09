@@ -80,11 +80,17 @@ class MediaitemController < ApplicationController
   end
 
   def add_to_episode
+    episode_id = params[:episode_id]
     params[:target_id].each do |id|
-      Mediaitem.find(id).episode_ids << params[:episode_id]
+      mi = Mediaitem.find(id)
+      mi.episode_ids.push episode_id 
+      mi.save!
+      ep = Episode.find(params[:episode_id])
+      ep.mediaitem_ids.push episode_id 
+      ep.save!
     end
-    flash[:notice] = 'added to episode.'
-    redirect_to :action => :index
+    flash[:notice] = 'mediaitems are added to episode.'
+    redirect_to :controller=>:episode, :action =>:show, :id=>episode_id 
   end
   
 end

@@ -3,7 +3,7 @@
 <!-- layout --><table class="layout" cellspacing="1" border="0">
 <!-- layout --><tr><td class="layout">
 <table cellspacing="1" border="0">
-<tr><td><%= link_to 'index', :action=>:index %></td></tr>
+<tr><td><%= link_to 'episode index', :action=>:index %></td></tr>
 <tr><td><%= link_to 'edit', :action=>:edit %></td></tr>
 </table>
 <!-- layout --></td><td class="layout">
@@ -17,12 +17,12 @@
 
 <h2>Mediaitems</h2>
 <table cellspacing="1" border="0">
-<tr><th>media items of episode-2009-04-24</th></tr>
-<tr><td><%=link_to 'sent by nishimotz 2009-04-20', 
-		:controller => 'mediaitem', :action=>'show', 
-		:id => 608984340 %></td></tr>
-<tr><td>sent by nishimotz 2009-04-21</td></tr>
-<tr><td>sent by nishimotz 2009-04-22</td></tr>
+<tr><th>mediaitems</th></tr>
+<% @mediaitems.each do |i| %>
+<tr><td>
+<%=link_to i.title, :controller=>:mediaitem, :action=>:show, :id=>i.id %>
+</td></tr>
+<% end %>
 </table>
 
 <!-- layout --></td></tr></table>
