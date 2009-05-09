@@ -6,4 +6,12 @@ class EpisodeController < ApplicationController
   def show
     @episode = Episode.find_by_id(params[:id])
   end
+
+  def new
+  end
+
+  def create
+    flash[:notice] = 'new episode created'
+    redirect_to :action=>:show
+  end
 end

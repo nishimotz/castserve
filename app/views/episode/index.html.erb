@@ -1,12 +1,18 @@
 <% if @current_station %>
-<h1>Episode List: station <%= @current_station %></h1>
+<%   station = 'station ' + @current_station %>
 <% else %>
-<h1>Episode List: no station selected!!</h1>
+<%   station = 'no station selected!!' %>
 <% end %>
+<h1>Episode List: <%= station %></h1>
+
+<!-- layout --><table class="layout" cellspacing="1" border="0">
+<!-- layout --><tr><td class="layout">
 
 <table cellspacing="1" border="0">
 <tr><td><%= link_to 'new', :action=>:new %></td></tr>
 </table>
+
+<!-- layout --></td><td class="layout">
 
 <table cellspacing="1" border="0">
 <tr><th>episodes</th><th>cast</th></tr>
@@ -19,3 +25,5 @@
 </tr>
 <% end %>
 </table>
+
+<!-- layout --></td></tr></table>
