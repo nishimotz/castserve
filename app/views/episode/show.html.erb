@@ -4,7 +4,11 @@
 <!-- layout --><tr><td class="layout">
 <table cellspacing="1" border="0">
 <tr><td><%= link_to 'episode index', :action=>:index %></td></tr>
-<tr><td><%= link_to 'edit', :action=>:edit %></td></tr>
+<tr><td><%= link_to 'edit property', :action=>:edit %></td></tr>
+<tr><td>
+<%= link_to 'cast episode', :controller=>:caststudio, :action=>:run, 
+  :format =>:jnlp, :s=>@episode.station %>
+</td></tr>
 </table>
 <!-- layout --></td><td class="layout">
 
