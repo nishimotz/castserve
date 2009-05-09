@@ -8,10 +8,18 @@ class EpisodeController < ApplicationController
   end
 
   def new
+    @item = Episode.new
+    @item.station = session[:current_station]
   end
 
   def create
-    flash[:notice] = 'new episode created'
-    redirect_to :action=>:index
+    @item = Episode.new(params[:item])
+    if @item.save
+      flash[:notice] = 'new episode created'
+      redirect_to :action=>:index
+    else
+      flash[:notice] = 'create error.'
+      render :action => 'new'
+    end
   end
 end
