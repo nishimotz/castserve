@@ -5,51 +5,24 @@ class MediaitemController < ApplicationController
   #include WaveUtils
   
   # from Web Browser : http://ubuntu-vm:3000/mediaitem/
-  # from CastStudio  : http://ubuntu-vm:3000/mediaitem/index.rss?station=77735&uid=101
   def index
-    if params[:station]
-      num = params[:station]
-    else 
-      #num = @current_station # '77735' # default
-      num = '77735' 
+    @items = Mediaitem.find(:all, :conditions => {:item_type => 'message' })
+    # for radio_button_tag
+    @episodes = Episode.find(:all, :conditions => {:station=>@current_station})
+    @episodes.each_with_index do |i, idx|
+      def i.selected=(b)
+        @selected = b
+      end
+      def i.selected?
+        @selected
+      end
+      i.selected = false
+      i.selected = true if idx == (@episodes.length - 1)
     end
-    #if params[:uid]
-    #  uid = params[:uid]
-    #else
-    #  uid = '101'
-    #end
-    #ch = Channel.find_by_number(num)
-    ch = Station.find_by_number(num)
-    @title = ch.title
-    #@link = 'http://localhost:3000/caststudio/rpc'
-    @description = 'CastStudio'
-    @language = 'ja'
-    @pubdate = Time.parse(Time.new.to_s).rfc822
-    @ch_category = 'CastStudio'
-    @ttl = 90
-    
-    # @items = Mediaitem.find_all_by_station(num)
-    @items = Mediaitem.find(:all, :conditions => {:station => num })
-    # , :item_type => 'message'
-
-    if params[:format] != 'rss'
-      # for radio_button_tag
-      @episodes = Episode.find(:all, :conditions => {:station=>num})
-      @episodes.each_with_index do |i, idx|
-        def i.selected=(b)
-          @selected = b
-        end
-        def i.selected?
-          @selected
-        end
-        i.selected = false
-        i.selected = true if idx == (@episodes.length - 1)
-      end
-      # for check_box_tag
-      @target = {}
-      @items.each do |i|
-        @target[i.id] = false
-      end
+    # for check_box_tag
+    @target = {}
+    @items.each do |i|
+      @target[i.id] = false
     end
   end
   

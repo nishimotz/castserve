@@ -32,7 +32,8 @@ class Mediaitem < ActiveRecord::Base
   def uploaded_audio=(audio)
     if audio.respond_to?(:content_type) and
       audio.content_type.match(/^audio\b/)
-      filepath = "test.wav"
+      tstamp = Time.now.getutc.strftime("%Y%m%d-%H%M%S") + sprintf("-%04x", rand(0x10000))
+      filepath = "mediaitem-#{tstamp}.wav"
       File.open("public/audio/" + filepath,"wb") do |file|
         file.write audio.read
       end

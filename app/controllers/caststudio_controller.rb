@@ -58,4 +58,19 @@ class CaststudioController < ApplicationController
     headers['Content-Type'] = 'application/x-java-jnlp-file'
   end
   
+  # from CastStudio  : http://ubuntu-vm:3000/caststudio/index.rss?station=77735&uid=101
+  def index
+    num = params[:station]
+    #  uid = params[:uid]
+    #ch = Channel.find_by_number(num)
+    ch = Station.find_by_number(num)
+    @title = ch.title
+    # @link = 'http://localhost:3000/caststudio/rpc'
+    @description = 'CastStudio'
+    @language = 'ja'
+    @pubdate = Time.parse(Time.new.to_s).rfc822
+    @ch_category = 'CastStudio'
+    @ttl = 90
+    @items = Mediaitem.find(:all, :conditions => {:station => num })
+  end
 end

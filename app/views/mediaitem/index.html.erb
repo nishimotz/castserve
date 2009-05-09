@@ -5,7 +5,7 @@
 <!-- layout --><table class="layout" cellspacing="1" border="0">
 <!-- layout --><tr><td class="layout">
 <table cellspacing="1" border="0">
-<tr><td><%= link_to 'new', :action => 'new'%></td></tr>
+<tr><td><%= link_to 'upload new', :action=>:new %></td></tr>
 <tr><td>
 <% @episodes.each do |i| %>
 <%= radio_button_tag( :episode_id, i.id, i.selected?)  %> 
@@ -17,9 +17,9 @@
 </table>
 <!-- layout --></td><td class="layout">
 
+<% if false %>
 <table cellspacing="1" border="0">
 <tr><th> Station Title</th><td> <%= @title %> </td></tr>
-<% if false %>
 <tr><th> Link</th><td> 
 <%= url_for :controller=>:caststudio, :action=>:rpc, :only_path=>false %>
 </td></tr>
@@ -27,8 +27,8 @@
 <tr><th> Language</th><td> <%= @language %></td></tr>
 <tr><th> PubDate</th><td> <%= @pubdate %></td></tr>
 <tr><th> Category</th><td> <%= @ch_category %></td></tr>
-<% end %>
 </table>
+<% end %>
 
 <h2>Items</h2>
 

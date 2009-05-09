@@ -11,8 +11,8 @@
  </resources>
  <application-desc main-class="com.nishimotz.mmm.CastStudio">
       <argument>-g</argument> <argument><%= @logging %></argument>
-      <argument>-r</argument> <argument><%= url_for :controller => 'mediaitem', :action => 'index', 
-      :format => 'rss', :only_path => false %></argument>
+      <argument>-r</argument> <argument><%= url_for :controller=>:caststudio, :action=>:index,
+      :format=>:rss, :only_path => false %></argument>
       <argument>-s</argument> <argument><%= @station %></argument>
       <argument>-u</argument> <argument><%= @uid %></argument>
  </application-desc>
