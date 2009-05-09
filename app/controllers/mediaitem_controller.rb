@@ -78,5 +78,10 @@ class MediaitemController < ApplicationController
     flash[:notice] = 'update OK.'
     redirect_to :action => :show, :id => id
   end
+
+  def add_to_episode
+    flash[:notice] = 'added to episode.'
+    redirect_to :action => :index
+  end
   
 end

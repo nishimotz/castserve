@@ -1,3 +1,5 @@
+<!-- form --><% form_tag do %>
+
 <h1>MediaItem List </h1>
 
 <!-- layout --><table class="layout" cellspacing="1" border="0">
@@ -6,11 +8,11 @@
 <tr><td><%= link_to 'new', :action => 'new'%></td></tr>
 <tr><td>
 <% @episodes.each do |i| %>
-<%= radio_button_tag( :episode, i.title, i.selected?)  %> 
+<%= radio_button_tag( :episode_id, i.id, i.selected?)  %> 
 <%= i.title %>
 <br />
 <% end %>
-<%= button_to 'add to episode', :action => 'add_to_episode'%>
+<%= submit_tag 'add to episode', :action => 'add_to_episode'%>
 </td></tr>
 </table>
 <!-- layout --></td><td class="layout">
@@ -18,7 +20,9 @@
 <table cellspacing="1" border="0">
 <tr><th> Station Title</th><td> <%= @title %> </td></tr>
 <% if false %>
-<tr><th> Link</th><td> <%= url_for :controller => 'caststudio', :action => 'rpc', :only_path => false %></td></tr>
+<tr><th> Link</th><td> 
+<%= url_for :controller=>:caststudio, :action=>:rpc, :only_path=>false %>
+</td></tr>
 <tr><th> Description</th><td> <%= @description %></td></tr>
 <tr><th> Language</th><td> <%= @language %></td></tr>
 <tr><th> PubDate</th><td> <%= @pubdate %></td></tr>
@@ -40,7 +44,7 @@
 <% @items.each do |i| -%>
 <tr>
 <td>
-<%= check_box_tag 'target[]', i.id, @target[i.id] %>
+<%= check_box_tag 'target_id[]', i.id, @target[i.id] %>
 </td>
 <td> 
 <%= link_to i.title, :action => 'show', :id => i.id %>
@@ -49,19 +53,10 @@
 <td> <%= i.desc %></td>
 <td> <%= i.pubdate %></td>
 <td> <%= i.category %></td>
-<!--
-<td> link <%= url_for :controller => 'caststudio', :action => 'rpc', :only_path => false %>
-</td>
-<li> description <%= i.desc %>
-<li> author <%= i.author %>
-<li> category <%= i.category %>
-<li> enclosure
-  url="<%= url_for :controller => 'audio', :action => i.filename_without_ext, :format => 'wav', :only_path => false %>"
-  length="0" 
-  type="<%= i.filetype %>"
--->
 </tr>
 <% end -%>
 </table>
 
 <!-- layout --></td></tr></table>
+
+<!-- form --><% end -%> 
