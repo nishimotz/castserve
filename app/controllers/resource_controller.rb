@@ -34,9 +34,11 @@ class ResourceController < ApplicationController
       RAILS_ROOT + "/public/audio/" + filename)
     # add to Mediaitem
     mediaitem = Mediaitem.new
-    mediaitem.station = "77735"
+    mediaitem.station = @current_station
     mediaitem.filepath = filename
     mediaitem.created_at = params[:import_pub_date]
+    mediaitem.title = Resource.find(params[:id]).title
+    mediaitem.category = 'message'
     if mediaitem.save
       flash[:notice] = "#{filename} import OK."
     else

@@ -1,5 +1,12 @@
 <h1>Resource Property</h1>
 
+<!-- layout --><table class="layout" cellspacing="1" border="0">
+<!-- layout --><tr><td class="layout">
+<table cellspacing="1" border="0"><tr>
+<td><%= link_to 'index', :action=>:index %></td>
+</tr></table>
+<!-- layout --></td><td class="layout">
+
 <table cellspacing="1" border="0">
 <tr><th>title</th> <td><%= @resource.title %></td></tr>
 <tr><th>item_count</th> <td><%= @resource.item_count %></td></tr>
@@ -10,20 +17,21 @@
 <table cellspacing="1" border="0">
 <tr>
 <th>action</th>
-<th>title</th>
+<% if false %><th>title</th><% end %>
 <th>pubDate</th>
-<th>enclosure.type</th>
+<% if false %><th>enclosure.type</th><% end %>
 <th>enclosure.url</th>
 </tr>
 <% @items.each do |i| -%>
 <tr>
 <td><%= button_to 'import', :action=>:import, :id=>@resource.id,
  :import_pub_date=>i.pubDate, :import_url=>i.enclosure.url %></td>
-<td><%= i.title %></td>
+<% if false %><td><%= i.title %></td><% end %>
 <td><%= i.pubDate %></td>
-<td><%= i.enclosure.type %></td>
+<% if false %><td><%= i.enclosure.type %></td><% end %>
 <td><%= i.enclosure.url %></td>
 </tr>
 <% end -%>
 </table>
 
+<!-- layout --></td></tr></table>

@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(:version => 10) do
     t.integer  "pos_x"
     t.integer  "pos_y"
     t.integer  "z_order"
-    t.boolean  "fetched"
+    t.integer  "fetched"
     t.string   "container"
     t.float    "gain"
     t.datetime "created_at"
