@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 9) do
+ActiveRecord::Schema.define(:version => 10) do
 
   create_table "channels", :force => true do |t|
     t.string   "number"
@@ -24,6 +24,13 @@ ActiveRecord::Schema.define(:version => 9) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "episodes_mediaitems", :id => false, :force => true do |t|
+    t.integer "episode_id"
+    t.integer "mediaitem_id"
+  end
+
+  add_index "episodes_mediaitems", ["episode_id", "mediaitem_id"], :name => "index_episodes_mediaitems_on_episode_id_and_mediaitem_id", :unique => true
 
   create_table "mediaiteminfos", :force => true do |t|
     t.integer  "mediaitem_id"

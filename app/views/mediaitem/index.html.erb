@@ -1,6 +1,6 @@
-<!-- form --><% form_tag do %>
-
 <h1>MediaItem List </h1>
+
+<!-- form --><% form_tag :action=>:add_to_episode do %>
 
 <!-- layout --><table class="layout" cellspacing="1" border="0">
 <!-- layout --><tr><td class="layout">
@@ -12,7 +12,7 @@
 <%= i.title %>
 <br />
 <% end %>
-<%= submit_tag 'add to episode', :action => 'add_to_episode'%>
+<!-- form --><%= submit_tag 'add to episode' %>
 </td></tr>
 </table>
 <!-- layout --></td><td class="layout">
@@ -44,7 +44,7 @@
 <% @items.each do |i| -%>
 <tr>
 <td>
-<%= check_box_tag 'target_id[]', i.id, @target[i.id] %>
+<!-- form --><%= check_box_tag 'target_id[]', i.id, @target[i.id] %>
 </td>
 <td> 
 <%= link_to i.title, :action => 'show', :id => i.id %>

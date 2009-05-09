@@ -1,8 +1,8 @@
 # require 'cgi'
 
 class Mediaitem < ActiveRecord::Base
-  #has_and_belongs_to_many :users
-  has_and_belongs_to_many :mediaiteminfo
+  has_and_belongs_to_many :episodes
+  has_and_belongs_to_many :mediaiteminfos
 
   #def link
   #  'http://localhost:3000/caststudio/rpc'
