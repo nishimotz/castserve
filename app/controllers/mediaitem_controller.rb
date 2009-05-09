@@ -27,6 +27,21 @@ class MediaitemController < ApplicationController
     # @items = Mediaitem.find_all_by_station(num)
     @items = Mediaitem.find(:all, :conditions => {:station => num })
     # , :item_type => 'message'
+
+    # for radio_button_tag
+    @episodes = Episode.find(:all, :conditions => {:station=>num})
+    @episodes.each_with_index do |i, idx|
+      def i.selected=(b)
+        @selected = b
+      end
+      def i.selected?
+        @selected
+      end
+      i.selected = false
+      i.selected = true if idx == (@episodes.length - 1)
+    end
+
+    # for check_box_tag
     @target = {}
     @items.each do |i|
       @target[i.id] = false

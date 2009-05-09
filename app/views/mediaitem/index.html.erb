@@ -5,8 +5,11 @@
 <table cellspacing="1" border="0">
 <tr><td><%= link_to 'new', :action => 'new'%></td></tr>
 <tr><td>
-<%= radio_button_tag("abc", "hoge", :checked => true)  %> hoge <br />
-<%= radio_button_tag("abc", "huga", :checked => false)  %> fuga <br />
+<% @episodes.each do |i| %>
+<%= radio_button_tag( :episode, i.title, i.selected?)  %> 
+<%= i.title %>
+<br />
+<% end %>
 <%= button_to 'add to episode', :action => 'add_to_episode'%>
 </td></tr>
 </table>
