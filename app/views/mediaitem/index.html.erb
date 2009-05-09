@@ -4,11 +4,16 @@
 <!-- layout --><tr><td class="layout">
 <table cellspacing="1" border="0">
 <tr><td><%= link_to 'new', :action => 'new'%></td></tr>
+<tr><td>
+<%= radio_button_tag("abc", "hoge", :checked => true)  %> hoge <br />
+<%= radio_button_tag("abc", "huga", :checked => false)  %> fuga <br />
+<%= button_to 'add to episode', :action => 'add_to_episode'%>
+</td></tr>
 </table>
 <!-- layout --></td><td class="layout">
 
 <table cellspacing="1" border="0">
-<tr><th> Title</th><td> <%= @title %> </td></tr>
+<tr><th> Station Title</th><td> <%= @title %> </td></tr>
 <% if false %>
 <tr><th> Link</th><td> <%= url_for :controller => 'caststudio', :action => 'rpc', :only_path => false %></td></tr>
 <tr><th> Description</th><td> <%= @description %></td></tr>
@@ -21,7 +26,9 @@
 <h2>Items</h2>
 
 <table cellspacing="1" border="0">
-<tr><th>title</th>
+<tr>
+<th>-</th>
+<th>title</th>
 <th>author</th>
 <th>desc</th>
 <th>date</th>
@@ -29,6 +36,9 @@
 </tr>
 <% @items.each do |i| -%>
 <tr>
+<td>
+<%= check_box :item, :selected %>
+</td>
 <td> 
 <%= link_to i.title, :action => 'show', :id => i.id %>
 </td>
