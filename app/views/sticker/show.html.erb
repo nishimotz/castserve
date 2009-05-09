@@ -6,9 +6,12 @@
 <tr><th>pubDate</th> <td> <%= @item.pubdate %></td></tr>
 <tr><th>author</th>  <td><%= @item.author %></td></tr>
 <tr><th>category</th><td> <%= @item.category %></td></tr>
-<tr><th>enclosure</th><td>
-url="<%= url_for :controller => 'audio', :action => @item.filename_without_ext, :format => 'wav', :only_path => false %>"
+<tr><th>enclosure.url</th><td>
+<a target="_blank" href="<%= url_for :controller => 'audio', :action => @item.filename_without_ext, :format => 'wav', :only_path => false %>"><%= url_for :controller => 'audio', :action => @item.filename_without_ext, :format => 'wav', :only_path => false %></a>
+</td>
+<tr><th>enclosure.info</th><td>
 length="0" 
 type="<%= @item.filetype %>"
-</td></tr> 
+</td>
+</tr> 
 </table>

@@ -9,7 +9,20 @@ BODY {
 	margin-top:20px;	
 	margin-left:20px;	
 	margin-right:20px;
-	}
+}
+
+table.layout {
+    width: 100%;
+    font-size:100%;
+    color: #FFFFcc;
+}
+td.layout {
+    vertical-align: top;
+    text-align: left;
+    font-size:100%;
+    background-color:#FFFFcc;
+}
+
 
 A:link		{color:#0000cc;}	
 A:visited	{color:#400080;}	
@@ -190,7 +203,8 @@ table {
 	text-align:left;
 	color:inherit;
 	background-color:#ccd5dd;
-	font-size:80%;
+	font-size:100%;
+	width: 100%;
 }
 th {
 	padding:5px;
@@ -202,7 +216,7 @@ th {
 td {
 	padding:5px;
 	margin:1px;
-	color:inherit;
+	color:#000000; /* inherit; */
 	background-color:#ffffaa;
 }
 

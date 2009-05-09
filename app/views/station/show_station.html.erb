@@ -1,6 +1,17 @@
 <h1>Station Property</h1>
 
+<!-- layout --><table class="layout" cellspacing="1" border="0">
+<!-- layout --><tr><td class="layout">
+
+<table cellspacing="1" border="0">
+<tr><td><%= link_to 'new episode', :controller=>:episode, :action=>:new %></td></tr>
+</table>
+
+<!-- layout --></td><td class="layout">
+
 <table cellspacing="1" border="0">
 <tr><th>number</th> <td><%= @station.number %></td></tr>
 <tr><th>title</th>  <td><%= @station.title %></td></tr>
 </table>
+
+<!-- layout --></td></tr></table>

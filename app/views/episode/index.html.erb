@@ -1,4 +1,13 @@
+<% if @current_station %>
 <h1>Episode List: station <%= @current_station %></h1>
+<% else %>
+<h1>Episode List: no station selected!!</h1>
+<% end %>
+
+<table cellspacing="1" border="0">
+<tr><td><%= link_to 'new', :action=>:new %></td></tr>
+</table>
+
 <table cellspacing="1" border="0">
 <tr><th>episodes</th><th>cast</th></tr>
 <% @episodes.each do |i| %>
