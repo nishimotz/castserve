@@ -4,14 +4,8 @@
 <!-- layout --><tr><td class="layout">
 
 <table cellspacing="1" border="0">
-<tr>
-<td>
-<%=link_to 'index', :action=>:index, :id=>@item.id %>
-</td></tr><tr>
-<td>
-<%=link_to 'back', :action=>:show, :id=>@item.id %>
-</td>	
-</tr>
+<tr><td><%=link_to 'index', :action=>:index, :id=>@item.id %></td></tr>
+<tr><td><%=link_to 'back', :action=>:show, :id=>@item.id %></td></tr>
 </table>
 
 <!-- layout --></td><td class="layout">
@@ -19,28 +13,20 @@
 <!-- form --><% form_for :item, @item, :url => { :action => :update, :id=>@item } do |f| %>
 
 <table cellspacing="1" border="0">
-<tr><th>title</th> 
-<td>
-<%= f.text_field :title, {:size => 50} %>
-</td>
-</tr>
-<tr><th>link</th>  
-<td><%= url_for :controller => 'caststudio', :action => 'rpc', :only_path => false %>
-</td></tr>
-<tr><th>description</th> <td>
-<%= f.text_field :desc %>
-</td></tr>
+<tr><th>title</th> <td><%= f.text_field :title, {:size => 50} %></td></tr>
+<tr><th>link</th> <td><%= url_for :controller=>:caststudio, :action=>:rpc, :only_path => false %></td></tr>
+<tr><th>description</th> <td><%= f.text_field :desc %></td></tr>
 <tr><th>pubDate</th> <td> <%= @item.pubdate %></td></tr>
 <tr><th>author</th>  <td> <%= f.text_field :author %> </td></tr>
 <tr><th>category</th><td> <%= f.text_field :category %></td></tr>
-<tr><th>enclosure</th><td>
-url="<%= url_for :controller => 'audio', :action => @item.filename_without_ext, :format => 'wav', :only_path => false %>"
-length="0" 
-type="<%= @item.filetype %>"
+<tr><th>enclosure.url</th>
+<td>
+<% s = url_for(:controller=>:audio, :action=>@item.filename_without_ext, :format=>:wav, :only_path => false) %>
+<%=link_to s, :controller=>:audio,:action=>@item.filename_without_ext, :format=>:wav, :only_path =>false %>
 </td></tr> 
-<tr><th></th><td>
-<%= submit_tag 'Update' %>
-</td></tr>
+<tr><th>enclosure.type</th><td><%= @item.filetype %></td></tr> 
+<tr><th>num_frames</th><td> <%= @item.mediaitemshapes.size %></td></tr>
+<tr><th></th><td><%= submit_tag 'Update' %></td></tr>
 </table>
 
 <!-- form --><% end %>

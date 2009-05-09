@@ -11,7 +11,8 @@ class Mediaitem < ActiveRecord::Base
   
   def pubdate
     # CGI::rfc1123_date(Time.new.to_s)
-    Time.parse(Time.new.to_s).rfc822
+    #Time.parse(Time.new.to_s).rfc822
+    updated_at.rfc822
   end
   
   def category

@@ -4,15 +4,10 @@
 <!-- layout --><tr><td class="layout">
 
 <table cellspacing="1" border="0">
-<tr><td>
-<%=link_to 'index', :action=>:index, :id=>@item.id %>
-</td></tr>
-<tr><td>
-<%=link_to 'edit', :action=>:edit, :id=>@item.id %>
-</td></tr>
-<tr><td>
-<%=link_to 'update shape', :action=>:update_shape, :id=>@item.id %>
-</td></tr>
+<tr><td><%=link_to 'upload new', :action=>:new %></td></tr>
+<tr><td><%=link_to 'index', :action=>:index, :id=>@item.id %></td></tr>
+<tr><td><%=link_to 'edit', :action=>:edit, :id=>@item.id %></td></tr>
+<tr><td><%=link_to 'update shape', :action=>:update_shape, :id=>@item.id %></td></tr>
 </table>
 
 <!-- layout --></td><td class="layout">
@@ -26,13 +21,13 @@
 <tr><th>pubDate</th> <td> <%= @item.pubdate %></td></tr>
 <tr><th>author</th>  <td><%= @item.author %></td></tr>
 <tr><th>category</th><td> <%= @item.category %></td></tr>
-<tr><th>enclosure</th><td>
-url="<%= url_for :controller => 'audio', :action => @item.filename_without_ext, :format => 'wav', :only_path => false %>"
-length="0" 
-type="<%= @item.filetype %>"
+<tr><th>enclosure.url</th>
+<td>
+<% s = url_for(:controller=>:audio, :action=>@item.filename_without_ext, :format=>:wav, :only_path => false) %>
+<%=link_to s, :controller=>:audio,:action=>@item.filename_without_ext, :format=>:wav, :only_path =>false %>
 </td></tr> 
+<tr><th>enclosure.type</th><td><%= @item.filetype %></td></tr> 
 <tr><th>num_frames</th><td> <%= @item.mediaitemshapes.size %></td></tr>
-
 </table>
 
 <!-- layout --></td></tr></table>
