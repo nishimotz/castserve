@@ -64,17 +64,19 @@ class CaststudioController < ApplicationController
   
   # from CastStudio  : http://ubuntu-vm:3000/caststudio/index.rss?station=77735&uid=101
   def index
-    num = params[:station]
+    episode_id = params[:episode_id]
+    # num = params[:station]
     #  uid = params[:uid]
-    #ch = Channel.find_by_number(num)
-    ch = Station.find_by_number(num)
-    @title = ch.title
+    # ch = Channel.find_by_number(num)
+    # ch = Station.find_by_number(num)
+    episode = Episode.find(episode_id)
+    @title = episode.title
     # @link = 'http://localhost:3000/caststudio/rpc'
-    @description = 'CastStudio'
+    @description = Station.find_by_number(episode.station).title
     @language = 'ja'
     @pubdate = Time.parse(Time.new.to_s).rfc822
     @ch_category = 'CastStudio'
     @ttl = 90
-    @items = Mediaitem.find(:all, :conditions => {:station => num })
+    @items = episode.mediaitems
   end
 end
