@@ -1,34 +1,24 @@
 <h1>MediaItem List </h1>
 
-<!-- form --><% form_tag :action=>:add_to_episode do %>
-
 <!-- layout --><table class="layout" cellspacing="1" border="0">
 <!-- layout --><tr><td class="layout">
 <table cellspacing="1" border="0">
 <tr><td><%= link_to 'upload new', :action=>:new %></td></tr>
+</table>
+<!-- layout --></td><td class="layout">
+
+<!-- form --><% form_tag :action=>:add_to_episode do %>
+
+<table cellspacing="1" border="0">
 <tr><td>
 <% @episodes.each do |i| %>
 <%= radio_button_tag( :episode_id, i.id, i.selected?)  %> 
 <%= i.title %>
-<br />
 <% end %>
-<!-- form --><%= submit_tag 'add to episode' %>
+<!-- form --><%= submit_tag 'add to episode', :name=>:add_to_episode %>
 </td></tr>
 </table>
-<!-- layout --></td><td class="layout">
 
-<% if false %>
-<table cellspacing="1" border="0">
-<tr><th> Station Title</th><td> <%= @title %> </td></tr>
-<tr><th> Link</th><td> 
-<%= url_for :controller=>:caststudio, :action=>:rpc, :only_path=>false %>
-</td></tr>
-<tr><th> Description</th><td> <%= @description %></td></tr>
-<tr><th> Language</th><td> <%= @language %></td></tr>
-<tr><th> PubDate</th><td> <%= @pubdate %></td></tr>
-<tr><th> Category</th><td> <%= @ch_category %></td></tr>
-</table>
-<% end %>
 
 <h2>Items</h2>
 
