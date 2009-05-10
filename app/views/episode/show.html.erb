@@ -7,7 +7,7 @@
 <tr><td><%= link_to 'edit property', :action=>:edit %></td></tr>
 <tr><td>
 <%= link_to 'cast episode', :controller=>:caststudio, :action=>:run, 
-  :format =>:jnlp, :s=>@episode.station %>
+  :format =>:jnlp, :s=>@episode.station, :episode_id=>@episode.id %>
 </td></tr>
 </table>
 <!-- layout --></td><td class="layout">

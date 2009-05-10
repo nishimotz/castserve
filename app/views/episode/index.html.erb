@@ -21,8 +21,8 @@
 <tr>
 <td><%=link_to i.title, :action => 'show', :id => i.id %></td>
 <td><%= i.mediaitems.size %></td>
-<td><%=link_to 'cast', :controller => 'caststudio', :action => 'run', 
-  :format => 'jnlp', :s => @current_station %>
+<td><%=link_to 'cast', :controller=>:caststudio, :action=>:run, 
+  :format=>:jnlp, :s=>@current_station, :episode_id=>i.id %>
 </td>
 </tr>
 <% end %>
