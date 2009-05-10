@@ -36,6 +36,7 @@ class MediaitemController < ApplicationController
   def create
     @mediaitem = Mediaitem.new(params[:mediaitem])
     if @mediaitem.save
+      @mediaitem.update_shape
       flash[:notice] = 'create OK.'
       redirect_to :action=>:show, :id=>@mediaitem
     else

@@ -16,6 +16,7 @@ class ResourceController < ApplicationController
     #
   end
   
+  # duplication : mediaitem_controller.rb
   def import
     uri = URI.parse(params[:import_url])
     http = Net::HTTP.new(uri.host, uri.port)
@@ -40,6 +41,7 @@ class ResourceController < ApplicationController
     mediaitem.title = Resource.find(params[:id]).title
     mediaitem.category = 'message'
     if mediaitem.save
+      mediaitem.update_shape
       flash[:notice] = "#{filename} import OK."
     else
       flash[:notice] = "#{filename} import ERROR."

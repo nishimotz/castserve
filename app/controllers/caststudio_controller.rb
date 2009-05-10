@@ -21,6 +21,10 @@ class CaststudioController < ApplicationController
     when 'show_info'
       params[:format] = 'info'
       @info = Mediaiteminfo.find_by_mediaitem_id_and_user_id(mediaitem_id, user_id)
+      if @info == nil
+        render :nothing => true, :status => 403
+        return
+      end
       headers['Content-Type'] = 'text/plain'
       # views/caststudio/rpc.info.erb
     when 'save_info'

@@ -1,4 +1,4 @@
-# require 'cgi'
+require 'uri'
 require 'lib/mmm/wave_utils'
 
 class Mediaitem < ActiveRecord::Base
@@ -32,15 +32,20 @@ class Mediaitem < ActiveRecord::Base
     'audio/x-wav'
   end
   
+  # duplication : resource_controller.rb
   def uploaded_audio=(audio)
-    if audio.respond_to?(:content_type) and audio.content_type.match(/^audio\b/)
-      tstamp = Time.now.getutc.strftime("%Y%m%d-%H%M%S") + sprintf("-%04x", rand(0x10000))
-      filepath = "mediaitem-#{tstamp}.wav"
-      File.open("public/audio/" + filepath,"wb") do |file|
-        file.write audio.read
-      end
-      self.filepath = filepath
+    # return nil if audio.respond_to?(:content_type) and audio.content_type.match(/^audio\b/)
+    ext = File.extname(audio.original_filename) # ".wav" or ".mp3" ..
+    tstamp = Time.now.getutc.strftime("%Y%m%d-%H%M%S") + sprintf("-%04x", rand(0x10000))
+    filename_org = "mediaitem-#{tstamp}_org#{ext}"
+    filename_wav = "mediaitem-#{tstamp}.wav"
+    File.open("public/audio/" + filename_org, "wb") do |file|
+      file.write audio.read
     end
+    # convert filename_org => filename
+    WaveUtils.wav_to_linear(RAILS_ROOT + "/public/audio/" + filename_org, 
+                            RAILS_ROOT + "/public/audio/" + filename_wav)
+    self.filepath = filename_wav
   end
 
   def update_shape
