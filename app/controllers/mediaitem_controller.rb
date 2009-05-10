@@ -1,9 +1,6 @@
 require 'time'
-#require 'mmm/wave_utils'
 
 class MediaitemController < ApplicationController
-  #include WaveUtils
-  
   # from Web Browser : http://ubuntu-vm:3000/mediaitem/
   # TODO: query by episode_id
   def index
@@ -43,7 +40,7 @@ class MediaitemController < ApplicationController
       redirect_to :action=>:show, :id=>@mediaitem
     else
       flash[:notice] = 'create Error.'
-      render :action=>:new
+      redirect_to :action=>:new
     end
   end
   
@@ -72,10 +69,6 @@ class MediaitemController < ApplicationController
       rescue
         # already added
       end
-      #mi.save!
-      #ep = Episode.find(params[:episode_id])
-      #ep.mediaitem_ids.push episode_id 
-      #ep.save!
     end
     flash[:notice] = 'mediaitems are added to episode.'
     redirect_to :controller=>:episode, :action=>:show, :id=>episode.id 
