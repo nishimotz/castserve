@@ -8,14 +8,21 @@
 # end
 
 require 'rss'
+require 'timeout'
 class Resource < ActiveRecord::Base
   def last_update
     "2009-04-25 12:34:56 UTC"
   end
   
   def items
-    rss = RSS::Parser.parse(location, false)
-    rss.channel.items
+    begin
+      timeout(1.0) do 
+        rss = RSS::Parser.parse(location, false)
+        return rss.channel.items
+      end
+    rescue TimeoutError
+      return []
+    end
   end
   
   def item_count
