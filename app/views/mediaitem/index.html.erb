@@ -11,10 +11,19 @@
 
 <table cellspacing="1" border="0">
 <tr><td>
+<% if false %>
 <% @episodes.each do |i| %>
 <%= radio_button_tag( :episode_id, i.id, i.selected?)  %> 
 <%= i.title %>
 <% end %>
+<% end %>
+
+<% options = '' %>
+<% @episodes.each do |i| %>
+<%   options += "<option value='#{i.id}'>#{i.title}</option>"  %> 
+<% end %>
+<%= select_tag(:episode_id, options)  %> 
+
 <!-- form --><%= submit_tag 'add to episode', :name=>:add_to_episode %>
 </td></tr>
 </table>
