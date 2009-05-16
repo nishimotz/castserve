@@ -1,7 +1,7 @@
 class StickerController < ApplicationController
   include MediaitemHelper
   def index
-    @title = Channel.find(@current_channel_id).title
+    @channel_title = Channel.find(@current_channel_id).title
     @description = 'CastStudio'
     @language = 'ja'
     @pubdate = Time.parse(Time.new.to_s).rfc822
