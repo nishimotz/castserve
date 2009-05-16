@@ -18,13 +18,14 @@
 <tr><th>title</th><td><%= @episode.title %></td></tr>
 </table>
 
-<h2>Mediaitems</h2>
-
 <!-- form --><% form_tag :action=>:submit_items do %>
+
+<h2>Mediaitems</h2>
 
 <table cellspacing="1" border="0">
 <tr><td>
 <!-- form --><%= submit_tag 'remove from episode', :name=>:remove_from_episode %>
+<!-- form --><%= hidden_field_tag :episode_id, @episode.id  %>
 </td></tr>
 </table>
 

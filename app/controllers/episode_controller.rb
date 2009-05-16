@@ -23,4 +23,25 @@ class EpisodeController < ApplicationController
       render :action => 'new'
     end
   end
+
+  def submit_items
+    if params[:remove_from_episode] != nil
+      remove_from_episode
+    end
+  end
+
+  def remove_from_episode
+    episode = Episode.find(params[:episode_id])
+    params[:target_id].each do |id|
+      mi = Mediaitem.find(id)
+      begin
+        mi.episodes.delete episode
+      rescue
+        # already removed
+      end
+    end
+    flash[:notice] = 'mediaitems are removed from episode.'
+    redirect_to :controller=>:episode, :action=>:show, :id=>episode.id 
+  end
+
 end
