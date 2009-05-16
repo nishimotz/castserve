@@ -17,6 +17,8 @@ class ApplicationController < ActionController::Base
   def check_login
     @user = session[:user]
     @current_channel_id = session[:current_channel_id]
-    @current_channel_name = Channel.find(session[:current_channel_id]).name
+    if @current_channel_id 
+      @current_channel_name = Channel.find(@current_channel_id).name
+    end
   end
 end

@@ -1,9 +1,9 @@
-<% if @current_station %>
-<%   station_info = 'station ' + @current_station %>
+<% if @current_channel_name %>
+<%   channel_info = 'channel ' + @current_channel_name %>
 <% else %>
-<%   station_info = 'no station selected!!' %>
+<%   channel_info = 'no channel selected!!' %>
 <% end %>
-<h1>Episode List: <%= station_info %></h1>
+<h1>Episode List: <%= channel_info %></h1>
 
 <!-- layout --><table class="layout" cellspacing="1" border="0">
 <!-- layout --><tr><td class="layout">
@@ -19,10 +19,9 @@
 <tr><th>title</th><th>mediaitems</th><th>cast</th></tr>
 <% @episodes.each do |i| %>
 <tr>
-<td><%=link_to i.title, :action => 'show', :id => i.id %></td>
-<td><%= i.mediaitems.size %></td>
-<td><%=link_to 'cast', :controller=>:caststudio, :action=>:run, 
-  :format=>:jnlp, :s=>@current_station, :episode_id=>i.id %>
+<td><%=link_to i.title, :action=>:show, :id=>i.id %></td>
+<td><%=i.mediaitems.size %></td>
+<td><%=link_to 'cast', :controller=>:caststudio, :action=>:run, :format=>:jnlp, :episode_id=>i.id %>
 </td>
 </tr>
 <% end %>
