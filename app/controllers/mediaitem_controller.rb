@@ -63,6 +63,12 @@ class MediaitemController < ApplicationController
     redirect_to :action=>:show, :id=>id
   end
 
+  def submit_items
+    if params[:add_to_episode] != nil
+      add_to_episode
+    end
+  end
+
   def add_to_episode
     episode = Episode.find(params[:episode_id])
     params[:target_id].each do |id|
