@@ -19,10 +19,22 @@
 </table>
 
 <h2>Mediaitems</h2>
+
+<!-- form --><% form_tag :action=>:submit_items do %>
+
 <table cellspacing="1" border="0">
-<tr><th>title</th><th>category</th><th>pubdate</th></tr>
+<tr><td>
+<!-- form --><%= submit_tag 'remove from episode', :name=>:remove_from_episode %>
+</td></tr>
+</table>
+
+<table cellspacing="1" border="0">
+<tr><th>-</th><th>title</th><th>category</th><th>pubdate</th></tr>
 <% @mediaitems.each do |i| %>
 <tr>
+<td>
+<!-- form --><%= check_box_tag 'target_id[]', i.id, false %>
+</td>
 <td>
 <%=link_to i.title, :controller=>:mediaitem, :action=>:show, :id=>i.id %>
 </td>
@@ -36,4 +48,8 @@
 <% end %>
 </table>
 
+<!-- form --><% end -%> 
+
 <!-- layout --></td></tr></table>
+
+
