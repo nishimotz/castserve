@@ -4,7 +4,6 @@
 
 item1:
   id: 1000001
-  station: 77735
   title: タイトル１
   desc: 補足１
   author: 発言者１
@@ -12,7 +11,6 @@ item1:
   item_type: 'message'
   
 item2:
-  station: 77735
   title: タイトル２
   desc: 補足２
   author: 発言者２
@@ -20,7 +18,6 @@ item2:
   item_type: 'message'
 
 item3:
-  station: 77735
   title: タイトル3
   desc: 補足3
   author: 発言者3
@@ -28,7 +25,6 @@ item3:
   item_type: 'message'
 
 item4:
-  station: 77735
   title: boku-orabe
   desc: boku-orabe
   author: irusu

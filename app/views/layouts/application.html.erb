@@ -14,7 +14,7 @@
 <%=link_to "O'ra-be", :controller=>:home, :action=>:index %>
 </td>
 <td>
-<%=link_to 'stations', :controller=>:station %>
+<%=link_to 'channels', :controller=>:channel %>
 </td>	
 <td>
 <%=link_to 'stickers', :controller=>:sticker %>
@@ -33,7 +33,7 @@
 </td>	
 <% if logged_in? -%>
 <td>
-station: <%= @current_station %>
+channel: <%= @current_channel_name %>
 </td>
 <td>
 user: <%= @user %>
@@ -43,7 +43,7 @@ user: <%= @user %>
 </td>
 <% else -%>
 <td>
-station: -
+channel: -
 </td>
 <td>
 <%   form_tag({ :controller=>:sessions, :action=>:create },

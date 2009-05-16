@@ -2,7 +2,7 @@ class CreateMediaiteminfos < ActiveRecord::Migration
   def self.up
     create_table :mediaiteminfos do |t|
       t.integer :mediaitem_id
-      t.integer :user_id
+      t.integer :episode_id
       t.integer :color
       t.float :media_start_time
       t.float :media_stop_time

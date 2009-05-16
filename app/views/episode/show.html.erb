@@ -1,4 +1,4 @@
-<h1>Episode Property: station <%= @current_station %></h1>
+<h1>Episode Property: channel <%= @current_channel_name %></h1>
 
 <!-- layout --><table class="layout" cellspacing="1" border="0">
 <!-- layout --><tr><td class="layout">
@@ -7,7 +7,7 @@
 <tr><td><%= link_to 'edit property', :action=>:edit %></td></tr>
 <tr><td>
 <%= link_to 'cast episode', :controller=>:caststudio, :action=>:run, 
-  :format =>:jnlp, :s=>@episode.station, :episode_id=>@episode.id %>
+  :format =>:jnlp, :episode_id=>@episode.id %>
 </td></tr>
 </table>
 <!-- layout --></td><td class="layout">
@@ -15,7 +15,6 @@
 <h2>Episode</h2>
 <table cellspacing="1" border="0">
 <tr><th>id</th><td><%= @episode.id %></td></tr>
-<tr><th>station</th><td><%= @episode.station %></td></tr>
 <tr><th>title</th><td><%= @episode.title %></td></tr>
 </table>
 

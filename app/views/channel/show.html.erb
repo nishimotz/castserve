@@ -1,0 +1,21 @@
+<h1>Channel Property</h1>
+
+<!-- layout --><table class="layout" cellspacing="1" border="0">
+<!-- layout --><tr><td class="layout">
+
+<table cellspacing="1" border="0">
+<tr><td><%= link_to 'new episode', :controller=>:episode, :action=>:new %></td></tr>
+<tr><td><%= link_to 'episode list', :controller=>:episode, :action=>:index %></td></tr>
+<tr><td><%= link_to 'sticker list', :controller=>:sticker, :action=>:index %></td></tr>
+</table>
+
+<!-- layout --></td><td class="layout">
+
+<table cellspacing="1" border="0">
+<tr><th>name</th> <td><%= @channel.name %></td></tr>
+<tr><th>title</th>  <td><%= @channel.title %></td></tr>
+</table>
+
+<p>TODO: episodes index must be here</p>
+
+<!-- layout --></td></tr></table>

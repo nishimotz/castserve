@@ -1,18 +1,6 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-s09:
-  number: '77711'
-  title:  "FM CHAPPY (土) ウィークエンドライフ"
 s10:
-  number: '77735'
+  id: 10077735
+  name: '77735'
   title:  "FM CHAPPY (金) 気ままにティータイム"
-s11:
-  number: '77755'
-  title:  "FM CHAPPY (火木金) アフタヌーンスクエア (美和さなえ)"
-s12:
-  number: '77761'
-  title:  "FM CHAPPY (土) サタデーヒット・ザ・ランキング"
-s13:
-  number: '77777'
-  title:  "FM CHAPPY (日) 週刊ブログ"
-

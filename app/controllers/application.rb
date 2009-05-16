@@ -16,6 +16,6 @@ class ApplicationController < ActionController::Base
   before_filter :check_login
   def check_login
     @user = session[:user]
-    @current_station = session[:current_station]
+    @current_channel_id = session[:current_channel_id]
   end
 end

@@ -35,7 +35,7 @@ class ResourceController < ApplicationController
       RAILS_ROOT + "/public/audio/" + filename)
     # add to Mediaitem
     mediaitem = Mediaitem.new
-    mediaitem.station = @current_station
+    # mediaitem.station = @current_station
     mediaitem.filepath = filename
     mediaitem.created_at = params[:import_pub_date]
     mediaitem.title = Resource.find(params[:id]).title

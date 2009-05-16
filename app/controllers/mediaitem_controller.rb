@@ -6,7 +6,7 @@ class MediaitemController < ApplicationController
   def index
     @items = Mediaitem.find(:all, :conditions => {:item_type => 'message' })
     # for radio_button_tag
-    @episodes = Episode.find(:all, :conditions => {:station=>@current_station})
+    @episodes = Episode.find(:all, :conditions => {:channel_id=>@current_channel_id})
     # @episodes = Episode.find(:all)
     @episodes.each_with_index do |i, idx|
       def i.selected=(b)
@@ -15,7 +15,7 @@ class MediaitemController < ApplicationController
       def i.selected?
         @selected
       end
-      # TODO: station should remember default episode
+      # TODO: channel should remember default episode(?)
       i.selected = false
       i.selected = true if idx == (@episodes.length - 1)
     end
@@ -29,7 +29,7 @@ class MediaitemController < ApplicationController
   
   def new
     @mediaitem = Mediaitem.new
-    @mediaitem.station = @current_station
+    # @mediaitem.station = @current_station
     @mediaitem.category = 'message'
   end
   

@@ -2,7 +2,7 @@ class CreateEpisodes < ActiveRecord::Migration
   def self.up
     create_table :episodes do |t|
       t.string :title
-      t.string :station
+      t.integer :channel_id
 
       t.timestamps
     end

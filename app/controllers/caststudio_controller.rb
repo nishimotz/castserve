@@ -20,7 +20,8 @@ class CaststudioController < ApplicationController
       # views/caststudio/rpc.shape.erb
     when 'show_info'
       params[:format] = 'info'
-      @info = Mediaiteminfo.find_by_mediaitem_id_and_user_id(mediaitem_id, user_id)
+      # TODO episode_id
+      @info = Mediaiteminfo.find_by_mediaitem_id(mediaitem_id) 
       if @info == nil
         render :nothing => true, :status => 403
         return
@@ -28,10 +29,11 @@ class CaststudioController < ApplicationController
       headers['Content-Type'] = 'text/plain'
       # views/caststudio/rpc.info.erb
     when 'save_info'
-      info = Mediaiteminfo.find_by_mediaitem_id_and_user_id(mediaitem_id, user_id)
+      # TODO episode_id
+      info = Mediaiteminfo.find_by_mediaitem_id(mediaitem_id) 
       unless info
         info = Mediaiteminfo.new
-        info.user_id = user_id
+        # TODO info.episode_id = episode_id
         info.mediaitem_id = mediaitem_id
       end
       info.color            = params[:c].to_i   ||  0
@@ -51,28 +53,27 @@ class CaststudioController < ApplicationController
   end
   
   def run
-    @station  = params[:s] # '77735'  
+    @episode_id  = params[:episode_id]
     @uid      = '101'
     @logging  = '1'
-    #@jar_href = '/java/caststudio.jar'
+    # @jar_href = '/java/caststudio.jar'
     @jnlp_title = "CastStudio"
     @jnlp_heap_size = "128m"
     @jnlp_vendor    = "nishimotz"
-    #@jnlp_rss       = "/mediaitem/list.rss"
+    # @jnlp_rss       = "/mediaitem/list.rss"
     headers['Content-Type'] = 'application/x-java-jnlp-file'
   end
   
-  # from CastStudio  : http://ubuntu-vm:3000/caststudio/index.rss?station=77735&uid=101
+  # from CastStudio  
+  #  http://ubuntu-vm:3000/caststudio/index.rss?episode_id=9977735&uid=101
   def index
     episode_id = params[:episode_id]
-    # num = params[:station]
     #  uid = params[:uid]
     # ch = Channel.find_by_number(num)
-    # ch = Station.find_by_number(num)
     episode = Episode.find(episode_id)
     @title = episode.title
     # @link = 'http://localhost:3000/caststudio/rpc'
-    @description = Station.find_by_number(episode.station).title
+    @description = episode.channel.title
     @language = 'ja'
     @pubdate = Time.parse(Time.new.to_s).rfc822
     @ch_category = 'CastStudio'

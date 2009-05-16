@@ -1,6 +1,6 @@
 class EpisodeController < ApplicationController
   def index
-    @episodes = Episode.find(:all, :conditions => {:station => session[:current_station]})
+    @episodes = Episode.find(:all, :conditions => {:channel_id => session[:current_channel_id]})
   end
   
   def show
@@ -10,7 +10,7 @@ class EpisodeController < ApplicationController
 
   def new
     @item = Episode.new
-    @item.station = session[:current_station]
+    @item.channel_id = session[:current_channel_id]
   end
 
   def create
