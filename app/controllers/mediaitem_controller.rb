@@ -1,6 +1,8 @@
 require 'time'
 
 class MediaitemController < ApplicationController
+  include MediaitemHelper # app/helpers/mediaitem_helper.rb
+
   # from Web Browser : http://ubuntu-vm:3000/mediaitem/
   # TODO: query by episode_id
   def index
@@ -75,11 +77,11 @@ class MediaitemController < ApplicationController
     redirect_to :controller=>:episode, :action=>:show, :id=>episode.id 
   end
 
-  def update_shape
-    mediaitem = Mediaitem.find_by_id(params[:id])
-    mediaitem.update_shape
-    flash[:notice] = '(dummy) mediaitemshape updated.'
-    redirect_to :action=>:show, :id=>mediaitem.id
-  end
+#  def update_shape
+#    mediaitem = Mediaitem.find_by_id(params[:id])
+#    mediaitem.update_shape
+#    flash[:notice] = '(dummy) mediaitemshape updated.'
+#    redirect_to :action=>:show, :id=>mediaitem.id
+#  end
 
 end

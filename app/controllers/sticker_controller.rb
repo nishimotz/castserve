@@ -1,4 +1,5 @@
 class StickerController < ApplicationController
+  include MediaitemHelper
   def index
     @title = Channel.find(@current_channel_id).title
     @description = 'CastStudio'
@@ -7,10 +8,16 @@ class StickerController < ApplicationController
     @ch_category = 'CastStudio'
     @ttl = 90
     
-    @items = Mediaitem.find(:all, :conditions => {:channel_id => @current_channel_id, :item_type => 'sticker' })
+    @items = Mediaitem.find(:all, :conditions => {:item_type => 'sticker' })
   end
   
   def show
     @item = Mediaitem.find(params[:id])
   end
+
+  def new
+    @mediaitem = Mediaitem.new
+    @mediaitem.category = 'sticker'
+  end
+  
 end

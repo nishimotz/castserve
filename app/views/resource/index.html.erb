@@ -16,7 +16,7 @@
 </tr>
 <% @resources.each do |i| -%>
 <tr>
-<td> <a href="<%=url_for :action => :show, :id => i.id %>"><%= i.title %></a> </td>
+<td> <%= link_to i.title,  :action => :show, :id => i.id %> </td>
 <td> <%= i.location %> </td>
 <td> <%= i.last_update %></td>
 <td> <%= i.item_count %></td>
