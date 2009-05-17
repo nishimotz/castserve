@@ -2,10 +2,9 @@ class CaststudioController < ApplicationController
   skip_before_filter :check_login
 
   def rpc
-    user_id = params[:uid]
-    f = params[:f] || ""        # http://localhost:3000/audio/FAP_43O6571A_ST.wav
-    basename = File.basename(f) # FAP_43O6571A_ST.wav
-    mediaitem = Mediaitem.find_by_filepath(basename)
+    # user_id = params[:uid]
+    guid = params[:guid].to_i || 0 
+    mediaitem = Mediaitem.find(guid)
     unless mediaitem
       render :nothing => true, :status => 404
       return
@@ -15,7 +14,7 @@ class CaststudioController < ApplicationController
     @action = params[:a]
     case @action
     when 'get_shape'
-      f = params[:f]
+      # f = params[:f]
       params[:format] = 'shape'
       @shape_array = Mediaitemshape.find(:all, :conditions=>{:mediaitem_id=>mediaitem_id}, :order=>:pos)
       headers['Content-Type'] = 'text/plain'
