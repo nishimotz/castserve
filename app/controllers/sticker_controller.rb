@@ -42,7 +42,7 @@ class StickerController < ApplicationController
     params[:target_id].each do |id|
       mi = Mediaitem.find(id)
       begin
-        # TODO: mi.channels.push channel
+        mi.channels.push channel
       rescue
         # already added
       end
