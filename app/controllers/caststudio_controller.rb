@@ -1,4 +1,6 @@
 class CaststudioController < ApplicationController
+  skip_before_filter :check_login
+
   def rpc
     user_id = params[:uid]
     f = params[:f] || ""        # http://localhost:3000/audio/FAP_43O6571A_ST.wav

@@ -8,9 +8,9 @@
 <category><%= @ch_category %></category>
 <docs>http://blogs.law.harvard.edu/tech/rss</docs>
 <ttl><%= @ttl %></ttl>
-
 <% @items.each do |i| -%>
 <item>
+<guid><%= i.id %></guid>
 <title><%= i.title %></title>
 <link><%= url_for :controller=>:caststudio, :action=>:rpc, :only_path=>false %></link>
 <description><%= i.desc %></description>
@@ -21,6 +21,5 @@
     :format=>:wav, :only_path=>false %>" length="0" type="<%= i.filetype %>" />
 </item>
 <% end -%>
-
 </channel>
 </rss>
