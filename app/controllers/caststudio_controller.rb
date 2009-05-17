@@ -12,11 +12,12 @@ class CaststudioController < ApplicationController
     
     case params[:a]
     when 'get_shape'
+      # views/caststudio/rpc.shape.erb
       params[:format] = 'shape'
       @shape_array = Mediaitemshape.find(:all, :conditions=>{:mediaitem_id=>mediaitem_id}, :order=>:pos)
       headers['Content-Type'] = 'text/plain'
-      # views/caststudio/rpc.shape.erb
     when 'show_info'
+      # views/caststudio/rpc.info.erb
       params[:format] = 'info'
       @info = Mediaiteminfo.find_by_mediaitem_id_and_episode_id(mediaitem_id, episode_id) 
       if @info == nil
@@ -24,7 +25,6 @@ class CaststudioController < ApplicationController
         return
       end
       headers['Content-Type'] = 'text/plain'
-      # views/caststudio/rpc.info.erb
     when 'save_info'
       info = Mediaiteminfo.find_by_mediaitem_id_and_episode_id(mediaitem_id, episode_id) 
       unless info
@@ -52,23 +52,16 @@ class CaststudioController < ApplicationController
     @episode_id  = params[:episode_id]
     @uid      = '101'
     @logging  = '1'
-    # @jar_href = '/java/caststudio.jar'
     @jnlp_title = "CastStudio"
     @jnlp_heap_size = "128m"
     @jnlp_vendor    = "nishimotz"
-    # @jnlp_rss       = "/mediaitem/list.rss"
     headers['Content-Type'] = 'application/x-java-jnlp-file'
   end
   
-  # from CastStudio  
-  #  http://ubuntu-vm:3000/caststudio/index.rss?episode_id=9977735&uid=101
   def index
     episode_id = params[:episode_id]
-    #  uid = params[:uid]
-    # ch = Channel.find_by_number(num)
     episode = Episode.find(episode_id)
     @title = episode.title
-    # @link = 'http://localhost:3000/caststudio/rpc'
     @description = episode.channel.title
     @language = 'ja'
     @pubdate = Time.parse(Time.new.to_s).rfc822
