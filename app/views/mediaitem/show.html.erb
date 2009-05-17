@@ -21,7 +21,7 @@
 <tr><th>enclosure.url</th>
 <td>
 <% s = url_for(:controller=>:audio, :action=>@item.filename_without_ext, :format=>:wav, :only_path=>false) %>
-<%=link_to s, :controller=>:audio,:action=>@item.filename_without_ext, :format=>:wav, :only_path=>false %>
+<%=link_to s, s %>
 </td></tr> 
 <tr><th>enclosure.type</th><td><%= @item.filetype %></td></tr> 
 <tr><th>num_frames</th><td> <%= @item.mediaitemshapes.size %></td></tr>
