@@ -2,27 +2,23 @@ class CaststudioController < ApplicationController
   skip_before_filter :check_login
 
   def rpc
-    # user_id = params[:uid]
-    guid = params[:guid].to_i || 0 
-    mediaitem = Mediaitem.find(guid)
+    mediaitem_id = params[:guid].to_i || 0 
+    mediaitem = Mediaitem.find(mediaitem_id)
     unless mediaitem
       render :nothing => true, :status => 404
       return
     end
-    mediaitem_id = mediaitem.id
+    episode_id = params[:episode_id].to_i || 0 
     
-    @action = params[:a]
-    case @action
+    case params[:a]
     when 'get_shape'
-      # f = params[:f]
       params[:format] = 'shape'
       @shape_array = Mediaitemshape.find(:all, :conditions=>{:mediaitem_id=>mediaitem_id}, :order=>:pos)
       headers['Content-Type'] = 'text/plain'
       # views/caststudio/rpc.shape.erb
     when 'show_info'
       params[:format] = 'info'
-      # TODO episode_id
-      @info = Mediaiteminfo.find_by_mediaitem_id(mediaitem_id) 
+      @info = Mediaiteminfo.find_by_mediaitem_id_and_episode_id(mediaitem_id, episode_id) 
       if @info == nil
         render :nothing => true, :status => 403
         return
@@ -30,11 +26,10 @@ class CaststudioController < ApplicationController
       headers['Content-Type'] = 'text/plain'
       # views/caststudio/rpc.info.erb
     when 'save_info'
-      # TODO episode_id
-      info = Mediaiteminfo.find_by_mediaitem_id(mediaitem_id) 
+      info = Mediaiteminfo.find_by_mediaitem_id_and_episode_id(mediaitem_id, episode_id) 
       unless info
         info = Mediaiteminfo.new
-        # TODO info.episode_id = episode_id
+        info.episode_id = episode_id
         info.mediaitem_id = mediaitem_id
       end
       info.color            = params[:c].to_i   ||  0
