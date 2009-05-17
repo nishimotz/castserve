@@ -16,6 +16,16 @@
 <tr><th>title</th>  <td><%= @channel.title %></td></tr>
 </table>
 
-<p>TODO: episodes index must be here</p>
+<h2>Stickers</h2>
+<table cellspacing="1" border="0">
+<tr><th>title</th><th>author</th><th>desc</th></tr>
+<% @channel.mediaitems.each do |i| -%>
+<tr>
+<td><%= i.title %></td>
+<td><%= i.author %></td>
+<td><%= i.desc %></td>
+</tr>
+<% end -%>
+</table>
 
 <!-- layout --></td></tr></table>
