@@ -31,4 +31,24 @@ class StickerController < ApplicationController
     @mediaitem.category = 'sticker'
   end
   
+  def submit_items
+    if params[:add_to_channel] != nil
+      add_to_channel
+    end
+  end
+
+  def add_to_channel
+    channel = Channel.find(params[:channel_id])
+    params[:target_id].each do |id|
+      mi = Mediaitem.find(id)
+      begin
+        # TODO: mi.channels.push channel
+      rescue
+        # already added
+      end
+    end
+    flash[:notice] = 'mediaitems are added to channel.'
+    redirect_to :controller=>:channel, :action=>:show, :id=>channel.id 
+  end
+
 end

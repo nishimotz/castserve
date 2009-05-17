@@ -11,17 +11,19 @@
 
 <!-- form --><% form_tag :action=>:submit_items do %>
 
+<!--
 <table class="style_table" cellspacing="1" border="0">
 <tr><th>Channel <%= @current_channel_name %></th><td><%= @current_channel_title %></td></tr>
 </table>
+-->
 
 <table cellspacing="1" border="0">
 <tr><td>
 <% options = ''; @channels.each do |i| -%>
 <%   if i.selected? -%>
-<%     options += "<option value='#{i.id}' selected='selected'>#{i.title}</option>" -%> 
+<%     options += "<option value='#{i.id}' selected='selected'>#{i.name} #{i.title}</option>" -%> 
 <%   else -%>
-<%     options += "<option value='#{i.id}'>#{i.title}</option>"  -%> 
+<%     options += "<option value='#{i.id}'>#{i.name} #{i.title}</option>"  -%> 
 <%   end -%>
 <% end -%>
 <%= select_tag(:channel_id, options)  %> 
@@ -36,6 +38,7 @@
 <th>-</th>
 <th>title</th>
 <th>desc</th>
+<th>num_frames</th>
 <th>date</th>
 </tr>
 <% @items.each do |i| -%>
@@ -47,6 +50,7 @@
 <%= link_to i.title, :action => 'show', :id => i.id %>
 </td>
 <td> <%= i.desc %></td>
+<td> <%= i.mediaitemshapes.size %></td>
 <td> <%= i.pubdate %></td>
 </tr>
 <% end -%>
