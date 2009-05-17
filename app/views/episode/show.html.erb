@@ -1,20 +1,21 @@
-<h1>Episode Property: channel <%= @current_channel_name %></h1>
+<h1>Episode Property: channel <%= @current_channel_name %> : <%= @current_channel_title %></h1>
 
 <!-- layout --><table class="layout" cellspacing="1" border="0">
 <!-- layout --><tr><td class="layout">
 <table cellspacing="1" border="0">
+<tr><td><%= link_to 'channel info', :controller=>:channel,
+    :action=>:show, :id=>@episode.channel_id %></td></tr>
 <tr><td><%= link_to 'episode index', :action=>:index %></td></tr>
 <tr><td><%= link_to 'edit property', :action=>:edit %></td></tr>
-<tr><td>
-<%= link_to 'cast episode', :controller=>:caststudio, :action=>:run, 
-  :format =>:jnlp, :episode_id=>@episode.id %>
-</td></tr>
+<tr><td><%= link_to 'show rss', :controller=>:caststudio, :action=>:index, 
+  :format =>:rss, :episode_id=>@episode.id %></td></tr>
+<tr><td><%= link_to 'cast episode', :controller=>:caststudio, :action=>:run, 
+  :format =>:jnlp, :episode_id=>@episode.id %></td></tr>
 </table>
 <!-- layout --></td><td class="layout">
 
-<h2>Episode</h2>
 <table cellspacing="1" border="0">
-<tr><th>title</th><td><%= @episode.title %></td></tr>
+<tr><th>Episode Title</th><td><%= @episode.title %></td></tr>
 </table>
 
 <!-- form --><% form_tag :action=>:submit_items do %>
@@ -35,15 +36,9 @@
 <td>
 <!-- form --><%= check_box_tag 'target_id[]', i.id, false %>
 </td>
-<td>
-<%=link_to i.title, :controller=>:mediaitem, :action=>:show, :id=>i.id %>
-</td>
-<td>
-<%= i.category %>
-</td>
-<td>
-<%= i.pubdate %>
-</td>
+<td><%= link_to i.title, :controller=>:mediaitem, :action=>:show, :id=>i.id %></td>
+<td><%= i.category %></td>
+<td><%= i.pubdate %></td>
 </tr>
 <% end %>
 </table>

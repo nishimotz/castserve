@@ -78,6 +78,10 @@ class CaststudioController < ApplicationController
     @pubdate = Time.parse(Time.new.to_s).rfc822
     @ch_category = 'CastStudio'
     @ttl = 90
-    @items = episode.mediaitems
+    @items = episode.mediaitems.dup # avoid appending to database
+    # stickers 
+    episode.channel.mediaitems.each do |i|
+      @items.push i
+    end
   end
 end
