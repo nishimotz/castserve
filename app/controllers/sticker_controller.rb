@@ -1,14 +1,25 @@
 class StickerController < ApplicationController
-  include MediaitemHelper
+  include MediaitemHelper 
+  # app/helpers/mediaitem_helper.rb
+
   def index
     @channel_title = Channel.find(@current_channel_id).title
-    @description = 'CastStudio'
-    @language = 'ja'
-    @pubdate = Time.parse(Time.new.to_s).rfc822
-    @ch_category = 'CastStudio'
-    @ttl = 90
-    
     @items = Mediaitem.find(:all, :conditions => {:item_type => 'sticker' })
+    @channels = Channel.find(:all)
+    @channels.each_with_index do |i, idx|
+      def i.selected=(b)
+        @selected = b
+      end
+      def i.selected?
+        @selected
+      end
+      i.selected = false
+      i.selected = true if i.id == @current_channel_id
+    end
+    @target = {}
+    @items.each do |i|
+      @target[i.id] = false
+    end
   end
   
   def show

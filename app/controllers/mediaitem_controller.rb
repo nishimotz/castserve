@@ -1,11 +1,9 @@
-#require 'time'
-
 class MediaitemController < ApplicationController
-  include MediaitemHelper # app/helpers/mediaitem_helper.rb
+  include MediaitemHelper 
+  # app/helpers/mediaitem_helper.rb
 
-  # from Web Browser : http://ubuntu-vm:3000/mediaitem/
-  # TODO: query by episode_id
   def index
+    # TODO: query by episode_id
     @items = Mediaitem.find(:all, :conditions => {:item_type => 'message' })
     # for radio_button_tag
     @episodes = Episode.find(:all, :conditions => {:channel_id=>@current_channel_id})
@@ -31,38 +29,9 @@ class MediaitemController < ApplicationController
   
   def new
     @mediaitem = Mediaitem.new
-    # @mediaitem.station = @current_station
     @mediaitem.category = 'message'
   end
   
-  def create
-    @mediaitem = Mediaitem.new(params[:mediaitem])
-    if @mediaitem.save
-      @mediaitem.update_shape
-      flash[:notice] = 'create OK.'
-      redirect_to :action=>:show, :id=>@mediaitem
-    else
-      flash[:notice] = 'create Error.'
-      redirect_to :action=>:new
-    end
-  end
-  
-  def show
-    @item = Mediaitem.find(params[:id])
-  end
-  
-  def edit
-    @item = Mediaitem.find(params[:id])
-  end
-  
-  def update
-    id = params[:id]
-    @item = Mediaitem.find_by_id(id)
-    @item.update_attributes(params[:item])
-    flash[:notice] = 'update OK.'
-    redirect_to :action=>:show, :id=>id
-  end
-
   def submit_items
     if params[:add_to_episode] != nil
       add_to_episode
@@ -82,12 +51,5 @@ class MediaitemController < ApplicationController
     flash[:notice] = 'mediaitems are added to episode.'
     redirect_to :controller=>:episode, :action=>:show, :id=>episode.id 
   end
-
-#  def update_shape
-#    mediaitem = Mediaitem.find_by_id(params[:id])
-#    mediaitem.update_shape
-#    flash[:notice] = '(dummy) mediaitemshape updated.'
-#    redirect_to :action=>:show, :id=>mediaitem.id
-#  end
 
 end
