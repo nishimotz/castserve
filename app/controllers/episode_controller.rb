@@ -10,11 +10,11 @@ class EpisodeController < ApplicationController
 
   def new
     @item = Episode.new
-    @item.channel_id = session[:current_channel_id]
   end
 
   def create
     @item = Episode.new(params[:item])
+    @item.channel_id = session[:current_channel_id]
     if @item.save
       flash[:notice] = 'new episode created'
       redirect_to :action=>:index

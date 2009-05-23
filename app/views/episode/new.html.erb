@@ -14,8 +14,6 @@
 <% form_for :item, @item, :url => { :action => :create } do |f| %>
 
 <table cellspacing="1" border="0">
-<tr><th>station</th>
-<td><%= f.text_field :station %></td></tr>
 <tr><th>episode title</th>
 <td><%= f.text_field :title %></td></tr>
 <tr><th>-</th><td><%= submit_tag 'Create' %></td></tr>
