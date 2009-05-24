@@ -38,7 +38,7 @@
 </td>
 <td><%= link_to i.title, :controller=>:mediaitem, :action=>:show, :id=>i.id %></td>
 <td><%= i.category %></td>
-<td><%= i.pubdate %></td>
+<td><%= i.pubdate.to_s(:short) %></td>
 </tr>
 <% end %>
 </table>

@@ -18,7 +18,7 @@
 <tr>
 <td> <%= link_to i.title,  :action => :show, :id => i.id %> </td>
 <td> <%= i.location %> </td>
-<td> <%= i.last_update %></td>
+<td> <%= i.last_update.to_s(:short) %></td>
 <td> <%= i.item_count %></td>
 </tr>
 <% end -%>

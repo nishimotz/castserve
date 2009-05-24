@@ -4,7 +4,7 @@
 <link><%= url_for :controller=>:caststudio, :action=>:rpc, :only_path=>false %></link>
 <description><%= @description %></description>
 <language><%= @language %></language>
-<pubDate><%= @pubdate %></pubDate>
+<pubDate><%= @pubdate_rfc822 %></pubDate>
 <category><%= @ch_category %></category>
 <docs>http://blogs.law.harvard.edu/tech/rss</docs>
 <ttl><%= @ttl %></ttl>
@@ -14,7 +14,7 @@
 <title><%= i.title %></title>
 <link><%= url_for :controller=>:caststudio, :action=>:rpc, :only_path=>false %></link>
 <description><%= i.desc %></description>
-<pubDate><%= i.pubdate %></pubDate>
+<pubDate><%= i.pubdate_rfc822 %></pubDate>
 <author><%= i.author %></author>
 <category><%= i.category %></category>
 <enclosure url="<%= url_for :controller=>:audio, :action=>i.filename_without_ext, 

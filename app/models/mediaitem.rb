@@ -12,8 +12,10 @@ class Mediaitem < ActiveRecord::Base
   #end
   
   def pubdate
-    # CGI::rfc1123_date(Time.new.to_s)
-    #Time.parse(Time.new.to_s).rfc822
+    updated_at
+  end
+  
+  def pubdate_rfc822
     updated_at.rfc822
   end
   

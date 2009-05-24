@@ -51,7 +51,7 @@
 </td>
 <td> <%= i.desc %></td>
 <td> <%= i.mediaitemshapes.size %></td>
-<td> <%= i.pubdate %></td>
+<td> <%= i.pubdate.to_s(:short) %></td>
 </tr>
 <% end -%>
 </table>
