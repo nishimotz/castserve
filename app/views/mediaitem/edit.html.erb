@@ -1,14 +1,11 @@
-<h1>MediaItem Property Edit</h1>
+<% content_for :title do %>MediaItem Property Edit<% end %>
 
-<!-- layout --><table class="layout" cellspacing="1" border="0">
-<!-- layout --><tr><td class="layout">
-
+<% content_for :actions do %>
 <table cellspacing="1" border="0">
 <tr><td><%=link_to 'index', :action=>:index, :id=>@item.id %></td></tr>
 <tr><td><%=link_to 'back', :action=>:show, :id=>@item.id %></td></tr>
 </table>
-
-<!-- layout --></td><td class="layout">
+<% end %>
 
 <!-- form --><% form_for :item, @item, :url => { :action => :update, :id=>@item } do |f| %>
 
@@ -30,4 +27,4 @@
 
 <!-- form --><% end %>
 
-<!-- layout --></td></tr></table>
+

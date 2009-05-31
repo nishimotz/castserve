@@ -1,15 +1,12 @@
-<h1>Channel Property</h1>
+<% content_for :title do %> Channel Property <% end %>
 
-<!-- layout --><table class="layout" cellspacing="1" border="0">
-<!-- layout --><tr><td class="layout">
-
+<% content_for :actions do %>
 <table cellspacing="1" border="0">
 <tr><td><%= link_to 'new episode', :controller=>:episode, :action=>:new %></td></tr>
 <tr><td><%= link_to 'episode list', :controller=>:episode, :action=>:index %></td></tr>
 <tr><td><%= link_to 'sticker list', :controller=>:sticker, :action=>:index %></td></tr>
 </table>
-
-<!-- layout --></td><td class="layout">
+<% end %>
 
 <table cellspacing="1" border="0">
 <tr><th>name</th> <td><%= @channel.name %></td></tr>
@@ -28,4 +25,3 @@
 <% end -%>
 </table>
 
-<!-- layout --></td></tr></table>

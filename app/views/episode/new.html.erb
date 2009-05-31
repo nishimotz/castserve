@@ -1,15 +1,10 @@
-<h1>New Episode : station <%= @current_station %></h1>
+<% content_for :title do %>New Episode : station <%= @current_station %><% end %>
 
-<!-- layout --><table class="layout" cellspacing="1" border="0">
-<!-- layout --><tr><td class="layout">
-
+<% content_for :actions do %>
 <table cellspacing="1" border="0">
-<tr><td>
-<%= link_to 'index', :action=>:index %>
-</td></tr>
+<tr><td><%= link_to 'index', :action=>:index %></td></tr>
 </table>
-
-<!-- layout --></td><td class="layout">
+<% end %>
 
 <% form_for :item, @item, :url => { :action => :create } do |f| %>
 
@@ -21,4 +16,4 @@
 
 <% end %>
 
-<!-- layout --></td></tr></table>
+

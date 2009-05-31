@@ -1,7 +1,8 @@
-<h1>Episode Property: channel <%= @current_channel_name %> : <%= @current_channel_title %></h1>
+<% content_for :title do %>
+Episode Property: channel <%= @current_channel_name %> : <%= @current_channel_title %></h1>
+<% end %>
 
-<!-- layout --><table class="layout" cellspacing="1" border="0">
-<!-- layout --><tr><td class="layout">
+<% content_for :actions do %>
 <table cellspacing="1" border="0">
 <tr><td><%= link_to 'channel info', :controller=>:channel,
     :action=>:show, :id=>@episode.channel_id %></td></tr>
@@ -12,7 +13,7 @@
 <tr><td><%= link_to 'cast episode', :controller=>:caststudio, :action=>:run, 
   :format =>:jnlp, :episode_id=>@episode.id %></td></tr>
 </table>
-<!-- layout --></td><td class="layout">
+<% end %>
 
 <table cellspacing="1" border="0">
 <tr><th>Episode Title</th><td><%= @episode.title %></td></tr>
@@ -45,6 +46,6 @@
 
 <!-- form --><% end -%> 
 
-<!-- layout --></td></tr></table>
+
 
 

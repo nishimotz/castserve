@@ -3,16 +3,15 @@
 <% else %>
 <%   channel_info = 'no channel selected!!' %>
 <% end %>
-<h1>Episode List: <%= channel_info %></h1>
+<% content_for :title do %>
+Episode List: <%= channel_info %>
+<% end %>
 
-<!-- layout --><table class="layout" cellspacing="1" border="0">
-<!-- layout --><tr><td class="layout">
-
+<% content_for :actions do %>
 <table cellspacing="1" border="0">
 <tr><td><%= link_to 'new episode', :action=>:new %></td></tr>
 </table>
-
-<!-- layout --></td><td class="layout">
+<% end %>
 
 <h2>episode list</h2>
 <table cellspacing="1" border="0">
@@ -27,4 +26,4 @@
 <% end %>
 </table>
 
-<!-- layout --></td></tr></table>
+

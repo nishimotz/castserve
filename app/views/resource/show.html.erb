@@ -1,11 +1,10 @@
-<h1>Resource Property</h1>
+<% content_for :title do %>Resource Property<% end %>
 
-<!-- layout --><table class="layout" cellspacing="1" border="0">
-<!-- layout --><tr><td class="layout">
+<% content_for :actions do %>
 <table cellspacing="1" border="0"><tr>
 <td><%= link_to 'index', :action=>:index %></td>
 </tr></table>
-<!-- layout --></td><td class="layout">
+<% end %>
 
 <table cellspacing="1" border="0">
 <tr><th>title</th> <td><%= @resource.title %></td></tr>
@@ -34,4 +33,3 @@
 <% end -%>
 </table>
 
-<!-- layout --></td></tr></table>

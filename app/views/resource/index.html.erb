@@ -1,10 +1,10 @@
-<h1>Resource List </h1>
-<!-- layout --><table class="layout" cellspacing="1" border="0">
-<!-- layout --><tr><td class="layout">
+<% content_for :title do %>Resource List<% end %>
+
+<% content_for :actions do %>
 <table cellspacing="1" border="0"><tr>
 <td><%= link_to 'new', :action => 'new'%></td>
 </tr></table>
-<!-- layout --></td><td class="layout">
+<% end %>
 
 <h2>Items</h2>
 <table cellspacing="1" border="0">
@@ -23,4 +23,4 @@
 </tr>
 <% end -%>
 </table>
-<!-- layout --></td></tr></table>
+

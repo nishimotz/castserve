@@ -1,16 +1,13 @@
-<h1>MediaItem Property</h1>
+<% content_for :title do %>MediaItem Property<% end %>
 
-<!-- layout --><table class="layout" cellspacing="1" border="0">
-<!-- layout --><tr><td class="layout">
-
+<% content_for :actions do %>
 <table cellspacing="1" border="0">
 <tr><td><%=link_to 'upload new', :action=>:new %></td></tr>
 <tr><td><%=link_to 'index', :action=>:index, :id=>@item.id %></td></tr>
 <tr><td><%=link_to 'edit', :action=>:edit, :id=>@item.id %></td></tr>
 <tr><td><%=link_to 'update shape', :action=>:update_shape, :id=>@item.id %></td></tr>
 </table>
-
-<!-- layout --></td><td class="layout">
+<% end %>
 
 <table cellspacing="1" border="0">
 <tr><th>title</th> <td><%= @item.title %></td></tr>
@@ -27,4 +24,4 @@
 <tr><th>num_frames</th><td> <%= @item.mediaitemshapes.size %></td></tr>
 </table>
 
-<!-- layout --></td></tr></table>
+

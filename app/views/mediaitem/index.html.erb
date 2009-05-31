@@ -1,11 +1,10 @@
-<h1>MediaItem List </h1>
+<% content_for :title do %> MediaItem List <% end %>
 
-<!-- layout --><table class="layout" cellspacing="1" border="0">
-<!-- layout --><tr><td class="layout">
+<% content_for :actions do %>
 <table cellspacing="1" border="0">
 <tr><td><%= link_to 'upload new', :action=>:new %></td></tr>
 </table>
-<!-- layout --></td><td class="layout">
+<% end %>
 
 <!-- form --><% form_tag :action=>:submit_items do %>
 
@@ -32,8 +31,8 @@
 <table cellspacing="1" border="0">
 <tr>
 <th>-</th>
-<th>title</th>
 <th>author</th>
+<th>title</th>
 <th>desc</th>
 <th>date</th>
 <th>category</th>
@@ -44,10 +43,8 @@
 <td>
 <!-- form --><%= check_box_tag 'target_id[]', i.id, @target[i.id] %>
 </td>
-<td> 
-<%= link_to i.title, :action => 'show', :id => i.id %>
-</td>
-<td> <%= i.author %></td>
+<td> <%= link_to i.author, :action=>:show, :id=>i.id %></td>
+<td> <%= link_to i.title,  :action=>:show, :id=>i.id %></td>
 <td> <%= i.desc %></td>
 <td> <%= i.pubdate.to_s(:short) %></td>
 <td> <%= i.category %></td>
@@ -58,5 +55,5 @@
 
 <!-- form --><% end -%> 
 
-<!-- layout --></td></tr></table>
+
 

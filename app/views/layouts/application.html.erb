@@ -10,54 +10,38 @@
 
 <table cellspacing="1" border="0">
 <tr>
-<td>
-<%=link_to "CastServe", :controller=>:home, :action=>:index %>
-</td>
-<td>
-<%=link_to 'channels', :controller=>:channel %>
-</td>	
-<td>
-<%=link_to 'stickers', :controller=>:sticker %>
-</td>	
-<td>
-<%=link_to 'episodes', :controller=>:episode %>
-</td>	
-<td>
-<%=link_to 'mediaitems', :controller=>:mediaitem %>
-</td>	
-<td>
-<%=link_to 'resources', :controller=>:resource %>
-</td>	
-<td>
-<%=link_to 'users', :controller=>:user %>
-</td>	
+<td><%=link_to "CastServe", :controller=>:home, :action=>:index %></td>
+<td><%=link_to 'channels', :controller=>:channel %></td>	
+<td><%=link_to 'stickers', :controller=>:sticker %></td>	
+<td><%=link_to 'episodes', :controller=>:episode %></td>	
+<td><%=link_to 'mediaitems', :controller=>:mediaitem %></td>	
+<td><%=link_to 'resources', :controller=>:resource %></td>	
+<td><%=link_to 'users', :controller=>:user %></td>	
 <% if logged_in? -%>
-<td>
-channel: <%= @current_channel_name %>
-</td>
-<td>
-user: <%= @user %>
-</td>
-<td>
-<%= button_to 'logout', :controller=>:sessions, :action=>:destroy %>
-</td>
+<td>channel: <%= @current_channel_name %></td>
+<td>user: <%= @user %></td>
+<td><%= button_to 'logout', :controller=>:sessions, :action=>:destroy %></td>
 <% else -%>
-<td>
-channel: -
-</td>
+<td>channel: -</td>
 <td>
 <%   form_tag({ :controller=>:sessions, :action=>:create },
   { :multipart => true }) do -%>
 Login as User: <%= text_field_tag :user %>
 Password:   <%= password_field_tag :password %>
 </td>
-<td>
-<%= submit_tag 'login' %>
-</td>
+<td><%= submit_tag 'login' %></td>
 <%   end -%>
 <% end -%>
 </tr></table>
 <p style="color: green"><%= flash[:notice] %></p>
+
+<h1><%= yield :title %></h1>
+<!-- layout --><table class="layout" cellspacing="1" border="0">
+<!-- layout --><tr><td class="layout">
+<%= yield :actions %>
+<!-- layout --></td><td class="layout">
 <%= yield %>
+<!-- layout --></td></tr></table>
+
 </body>
 </html>

@@ -1,21 +1,14 @@
-<h1>Sticker List </h1>
+<% content_for :title do %> Sticker List <% end %>
 
-<!-- layout --><table class="layout" cellspacing="1" border="0">
-<!-- layout --><tr><td class="layout">
+<% content_for :actions do %>
 <table class="style_table" cellspacing="1" border="0">
 <tr>
 <td><%= link_to 'new', :action => 'new'%></td>
 </tr>
 </table>
-<!-- layout --></td><td class="layout">
+<% end %>
 
 <!-- form --><% form_tag :action=>:submit_items do %>
-
-<!--
-<table class="style_table" cellspacing="1" border="0">
-<tr><th>Channel <%= @current_channel_name %></th><td><%= @current_channel_title %></td></tr>
-</table>
--->
 
 <table cellspacing="1" border="0">
 <tr><td>
@@ -36,8 +29,8 @@
 <table cellspacing="1" border="0">
 <tr>
 <th>-</th>
+<th>author</th>
 <th>title</th>
-<th>desc</th>
 <th>num_frames</th>
 <th>date</th>
 </tr>
@@ -46,10 +39,8 @@
 <td>
 <!-- form --><%= check_box_tag 'target_id[]', i.id, @target[i.id] %>
 </td>
-<td> 
-<%= link_to i.title, :action => 'show', :id => i.id %>
-</td>
-<td> <%= i.desc %></td>
+<td> <%= link_to i.author, :action=>:show, :id=>i.id %></td>
+<td> <%= link_to i.title,  :action=>:show, :id=>i.id %></td>
 <td> <%= i.mediaitemshapes.size %></td>
 <td> <%= i.pubdate.to_s(:short) %></td>
 </tr>
@@ -57,4 +48,3 @@
 </table>
 <!-- form --><% end -%> 
 
-<!-- layout --></td></tr></table>
