@@ -7,12 +7,9 @@
 # >> WaveUtils.wav_to_shape('/tmp/hoge.wav', '/tmp/hoge.shape')
 
 module WaveUtils
-  #puts 'hoge'  
   SOX_BIN      = "/usr/bin/sox"
   FFMPEG_BIN   = "/usr/bin/ffmpeg"
   MMM_BIN_DIR  = File.dirname(__FILE__) + "/mmmpeak/"
-  #MMMPEAK_BIN  = '"' + MMM_BIN_DIR.gsub(/ /, '促 ') + "mmmpeak"  + '"'
-  #MMMSHAPE_BIN = '"' + MMM_BIN_DIR.gsub(/ /, '促 ') + "mmmshape" + '"'
   MMMPEAK_BIN  = MMM_BIN_DIR + "mmmpeak" 
   MMMSHAPE_BIN = MMM_BIN_DIR + "mmmshape"
   
