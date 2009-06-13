@@ -29,15 +29,17 @@ ActionController::Routing::Routes.draw do |map|
 
   # See how all your routes lay out with "rake routes"
 
-  # Install the default routes as the lowest priority.
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
-  
-  # nishimoto
+  # nishimotz
+  # map.resources :channels, :stickers, :episodes, :mediaitems
   map.connect ':controller/:action.:format'    # mediaitem/list.rss
   map.connect ':controller/:action'            # caststudio/rpc
 
   map.root :controller => "home" 
   map.connect 'login', :controller => 'sessions', :action => 'create'
   map.connect 'logout', :controller => 'sessions', :action => 'destroy'
+
+  # Install the default routes as the lowest priority.
+  map.connect ':controller/:action/:id'
+  map.connect ':controller/:action/:id.:format'
+  
 end

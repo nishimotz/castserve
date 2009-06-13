@@ -46,6 +46,18 @@ Episode Property: channel <%= @current_channel_name %> : <%= @current_channel_ti
 
 <!-- form --><% end -%> 
 
+<h2>Stickers</h2>
+<table cellspacing="1" border="0">
+<tr><th>title</th><th>author</th><th>desc</th></tr>
+<% @episode.channel.mediaitems.each do |i| -%>
+<tr>
+<td><%= i.title %></td>
+<td><%= i.author %></td>
+<td><%= i.desc %></td>
+</tr>
+<% end -%>
+</table>
+
 
 
 

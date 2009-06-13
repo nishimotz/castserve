@@ -1,27 +1,23 @@
-<h1>Mediaitem new</h1>
+<% content_for :title do %> MediaItem Upload New <% end %>
 
-<!-- layout --><table class="layout" cellspacing="1" border="0">
-<!-- layout --><tr><td class="layout">
-
+<% content_for :actions do %>
 <table cellspacing="1" border="0">
 <tr><td><%= link_to 'index', :action =>:index %></td></tr>
 </table>
-
-<!-- layout --></td><td class="layout">
+<% end %>
 
 <!-- form --><% form_for :mediaitem, @mediaitem,
     :url => { :action => :create },
     :html => { :multipart => true } do |form| %>
 <table cellspacing="1" border="0">
-<tr><th>Station</th><td> <%= form.text_field :station %></td></tr>
+<tr><th>Author</th><td>  <%= form.text_field :author %></td></tr>
 <tr><th>Title</th><td>   <%= form.text_field :title %></td></tr>
 <tr><th>Desc</th><td>    <%= form.text_field :desc %></td></tr>
-<tr><th>Author</th><td>  <%= form.text_field :author %></td></tr>
+<% if false %>
 <tr><th>category</th><td><%= form.text_field :category %></td></tr>
+<% end %>
 <tr><th>File</th><td>    <%= form.file_field :uploaded_audio %></td></tr>
-<tr><th>-</th> <td><%= submit_tag 'update' %></td></tr>
+<tr><th>-</th> <td><%= submit_tag 'upload' %></td></tr>
 </table>
 <!-- form --><% end %>
-
-<!-- layout --></td></tr></table>
 

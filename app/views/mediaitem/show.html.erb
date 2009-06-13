@@ -10,10 +10,10 @@
 <% end %>
 
 <table cellspacing="1" border="0">
-<tr><th>title</th> <td><%= @item.title %></td></tr>
-<tr><th>description</th> <td> <%= @item.desc %></td></tr>
-<tr><th>pubDate</th> <td> <%= @item.pubdate.to_s(:short) %></td></tr>
 <tr><th>author</th>  <td><%= @item.author %></td></tr>
+<tr><th>title</th> <td><%= @item.title %></td></tr>
+<tr><th>pubDate</th> <td> <%= @item.pubdate.to_s(:short) %></td></tr>
+<tr><th>description</th> <td> <%= @item.desc %></td></tr>
 <tr><th>category</th><td> <%= @item.category %></td></tr>
 <tr><th>enclosure.url</th>
 <td>

@@ -11,11 +11,21 @@
 <tr><th>name</th><th>title</th><th>episode</th><th>resource</th><th>sticker</th></tr>
 <% @channels.each do |s| -%>
 <tr>
+
+<% if true %>
 <td><%= link_to s.name, :action=>:show, :id=>s.id %></td>
 <td><%= link_to s.title, :action=>:show, :id=>s.id %></td>
 <td><%= link_to 'episodes', :controller=>:episode, :channel_id=>s.id %></td>
 <td><%= link_to 'resources', :controller=>:resource, :channel_id=>s.id %></td>
 <td><%= link_to 'stickers', :controller=>:sticker, :channel_id=>s.id %></td>
+<% else %>
+<td><%= link_to s.name, channel_path(s.id) %></td>
+<td><%= link_to s.title, channel_path(s.id) %></td>
+<td><%= link_to 'episodes', episodes_path(:channel_id=>s.id) %></td>
+<td><%= link_to 'resources', resources_path(:channel_id=>s.id) %></td>
+<td><%= link_to 'stickers', stickers_path(:channel_id=>s.id) %></td>
+<% end %>
+
 </tr>
 <% end -%>
 </table>

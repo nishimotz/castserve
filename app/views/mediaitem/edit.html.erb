@@ -10,10 +10,10 @@
 <!-- form --><% form_for :item, @item, :url => { :action => :update, :id=>@item } do |f| %>
 
 <table cellspacing="1" border="0">
-<tr><th>title</th> <td><%= f.text_field :title, {:size => 50} %></td></tr>
-<tr><th>description</th> <td><%= f.text_field :desc %></td></tr>
-<tr><th>pubDate</th> <td> <%= @item.pubdate.to_s(:short) %></td></tr>
 <tr><th>author</th>  <td> <%= f.text_field :author %> </td></tr>
+<tr><th>title</th> <td><%= f.text_field :title, {:size => 50} %></td></tr>
+<tr><th>pubDate</th> <td> <%= @item.pubdate.to_s(:short) %></td></tr>
+<tr><th>description</th> <td><%= f.text_field :desc %></td></tr>
 <tr><th>category</th><td> <%= f.text_field :category %></td></tr>
 <tr><th>enclosure.url</th>
 <td>
