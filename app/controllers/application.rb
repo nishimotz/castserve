@@ -18,9 +18,15 @@ class ApplicationController < ActionController::Base
     @user = session[:user]
     @current_channel_id = session[:current_channel_id]
     if @current_channel_id 
-      c = Channel.find(@current_channel_id)
-      @current_channel_name = c.name
-      @current_channel_title = c.title
+      begin
+        c = Channel.find(@current_channel_id)
+        @current_channel_name = c.name
+        @current_channel_title = c.title
+      rescue
+        @current_channel_id = session[:current_channel_id] = nil
+        @current_channel_name = ''
+        @current_channel_title = ''
+      end
     end
   end
 end

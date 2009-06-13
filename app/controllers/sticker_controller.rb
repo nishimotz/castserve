@@ -3,6 +3,9 @@ class StickerController < ApplicationController
   # app/helpers/mediaitem_helper.rb
 
   def index
+    unless @current_channel_id 
+      @channels = @items = []; return
+    end
     @channel_title = Channel.find(@current_channel_id).title
     @items = Mediaitem.find(:all, :conditions => {:item_type => 'sticker' })
     @channels = Channel.find(:all)
