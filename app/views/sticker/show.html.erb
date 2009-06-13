@@ -2,26 +2,23 @@
 
 <% content_for :actions do %>
 <table cellspacing="1" border="0">
-<tr><td><%=link_to 'upload new', :action=>:new %></td></tr>
-<tr><td><%=link_to 'index', :action=>:index, :id=>@item.id %></td></tr>
-<tr><td><%=link_to 'edit', :action=>:edit, :id=>@item.id %></td></tr>
+<tr><td><%=link_to 'upload new', new_sticker_path %></td></tr>
+<tr><td><%=link_to 'index', sticker_index_path %></td></tr>
+<tr><td><%=link_to 'edit', edit_sticker_path(@item.id) %></td></tr>
 <tr><td><%=link_to 'update shape', :action=>:update_shape, :id=>@item.id %></td></tr>
 </table>
 <% end %>
 
 <table cellspacing="1" border="0">
-<tr><th>author</th>  <td><%= @item.author %></td></tr>
-<tr><th>title</th> <td><%= @item.title %></td></tr>
-<% if false %>
-<tr><th>link</th>  <td><%= url_for :controller => 'caststudio',
-    :action => 'rpc', :only_path => false %></td></tr>
-<% end %>
-<tr><th>description</th> <td> <%= @item.desc %></td></tr>
+<tr><th>author</th>  <td><%=h @item.author %></td></tr>
+<tr><th>title</th> <td><%=h @item.title %></td></tr>
+<tr><th>description</th> <td> <%=h @item.desc %></td></tr>
 <tr><th>pubDate</th> <td> <%= @item.pubdate.to_s(:short) %></td></tr>
 <tr><th>category</th><td> <%= @item.category %></td></tr>
 <tr><th>enclosure.url</th><td>
 <!-- TODO: launch audio player -->
-<a target="_blank" href="<%= url_for :controller => :audio, :action => @item.filename_without_ext, :format => :wav, :only_path => false %>"><%= url_for :controller => :audio, :action => @item.filename_without_ext, :format => :wav, :only_path => false %></a>
+<% p = url_for :controller => :audio, :action => @item.filename_without_ext, :format => :wav, :only_path => false %>
+<a target="_blank" href="<%= p %>"><%= p %></a>
 </td>
 <tr><th>enclosure.info</th><td>
 length="0" 

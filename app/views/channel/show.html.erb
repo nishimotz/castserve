@@ -2,15 +2,15 @@
 
 <% content_for :actions do %>
 <table cellspacing="1" border="0">
-<tr><td><%= link_to 'new episode', :controller=>:episode, :action=>:new %></td></tr>
-<tr><td><%= link_to 'episode list', :controller=>:episode, :action=>:index %></td></tr>
-<tr><td><%= link_to 'sticker list', :controller=>:sticker, :action=>:index %></td></tr>
+<tr><td><%= link_to 'new episode', new_episode_path %></td></tr>
+<tr><td><%= link_to 'episode list', episode_index_path %></td></tr>
+<tr><td><%= link_to 'sticker list', sticker_index_path %></td></tr>
 </table>
 <% end %>
 
 <table cellspacing="1" border="0">
-<tr><th>name</th> <td><%= @channel.name %></td></tr>
-<tr><th>title</th>  <td><%= @channel.title %></td></tr>
+<tr><th>name</th> <td><%=h @channel.name %></td></tr>
+<tr><th>title</th>  <td><%=h @channel.title %></td></tr>
 </table>
 
 <h2>Stickers</h2>
@@ -18,9 +18,9 @@
 <tr><th>title</th><th>author</th><th>desc</th></tr>
 <% @channel.mediaitems.each do |i| -%>
 <tr>
-<td><%= i.title %></td>
-<td><%= i.author %></td>
-<td><%= i.desc %></td>
+<td><%=h i.title %></td>
+<td><%=h i.author %></td>
+<td><%=h i.desc %></td>
 </tr>
 <% end -%>
 </table>

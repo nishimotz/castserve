@@ -30,7 +30,7 @@ ActionController::Routing::Routes.draw do |map|
   # See how all your routes lay out with "rake routes"
 
   # nishimotz
-  # map.resources :channels, :stickers, :episodes, :mediaitems
+  map.resources :channel, :sticker, :episode, :mediaitem, :resource
   map.connect ':controller/:action.:format'    # mediaitem/list.rss
   map.connect ':controller/:action'            # caststudio/rpc
 

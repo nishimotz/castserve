@@ -3,7 +3,7 @@
 <% content_for :actions do %>
 <table class="style_table" cellspacing="1" border="0">
 <tr>
-<td><%= link_to 'new', :action => 'new'%></td>
+<td><%= link_to 'new', new_sticker_path %></td>
 </tr>
 </table>
 <% end %>
@@ -39,8 +39,8 @@
 <td>
 <!-- form --><%= check_box_tag 'target_id[]', i.id, @target[i.id] %>
 </td>
-<td> <%= link_to i.author, :action=>:show, :id=>i.id %></td>
-<td> <%= link_to i.title,  :action=>:show, :id=>i.id %></td>
+<td> <%= link_to h(i.author), sticker_path(i.id) %></td>
+<td> <%= link_to h(i.title),  sticker_path(i.id) %></td>
 <td> <%= i.mediaitemshapes.size %></td>
 <td> <%= i.pubdate.to_s(:short) %></td>
 </tr>

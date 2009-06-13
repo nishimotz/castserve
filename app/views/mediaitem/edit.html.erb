@@ -7,7 +7,7 @@
 </table>
 <% end %>
 
-<!-- form --><% form_for :item, @item, :url => { :action => :update, :id=>@item } do |f| %>
+<!-- form --><% form_for :item, @item, :url => mediaitem_path(@item), :html => {:method => :put} do |f| %>
 
 <table cellspacing="1" border="0">
 <tr><th>author</th>  <td> <%= f.text_field :author %> </td></tr>
