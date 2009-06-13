@@ -5,6 +5,6 @@ class MediaitemControllerTest < ActionController::TestCase
   # rake db:test:clone
   # rake test
   def test_index
-    get :index, :format => 'rss'
+    get :index, :format => 'html'
   end
 end
