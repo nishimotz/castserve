@@ -1,3 +1,4 @@
+# http://groups.google.co.jp/group/comp.lang.ruby/browse_thread/thread/e4ffdc9226489861
 require 'uri'
 require 'lib/mmm/wave_utils'
 
@@ -62,5 +63,28 @@ class Mediaitem < ActiveRecord::Base
         shape.save!
       end
     end
+  end
+
+  def import(u)
+    uri = URI.parse(u)
+    http = Net::HTTP.new(uri.host, uri.port)
+    filename = File.basename(uri.path)
+    # "path/to/foobar.wav" => "foobar_org.wav"
+    filename_tmp = RAILS_ROOT + "/tmp/" + File.basename(filename, ".*") + "_org" + File.extname(filename)
+    http.start do
+      http.request_get(uri.path) do |res|
+        File.open(filename_tmp, 'wb') do |f|
+          f.write(res.body)
+        end
+      end
+    end
+    WaveUtils.wav_to_linear(filename_tmp, RAILS_ROOT + "/public/audio/" + filename)
+    # WaveUtils.wav_to_linear(RAILS_ROOT + "/tmp/" + filename_org, 
+    #                         RAILS_ROOT + "/tmp/" + filename)
+    # a = Audiofile.new
+    # a.name = filename
+    # a.file = File.open(RAILS_ROOT + "/tmp/" + filename, 'rb').read
+    # a.save!
+    self.filepath = filename
   end
 end
