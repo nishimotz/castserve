@@ -31,17 +31,17 @@ class ResourceController < ApplicationController
           end
         end
       end
-    rescue ex
+    rescue
       flash[:notice] = "error on saving audio."
-      redirect_to :back 
+      redirect_to :back ; return
     end
     # convert filename_org => filename
     begin
       WaveUtils.wav_to_linear(RAILS_ROOT + "/public/audio/" + filename_org, 
         RAILS_ROOT + "/public/audio/" + filename)
-    rescue ex
+    rescue
       flash[:notice] = "error on wav_to_linear."
-      redirect_to :back 
+      redirect_to :back ; return
     end
     # add to Mediaitem
     mediaitem = Mediaitem.new
