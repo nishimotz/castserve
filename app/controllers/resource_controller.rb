@@ -23,12 +23,17 @@ class ResourceController < ApplicationController
     # "path/to/foobar.wav" => "foobar_org.wav"
     filename_org = File.basename(uri.path, ".*") + "_org" + File.extname(uri.path)
     filename     = File.basename(uri.path)
-    http.start do
-      http.request_get(uri.path) do |res|
-        File.open(RAILS_ROOT + "/public/audio/" + filename_org, 'wb') do |f|
-          f.write(res.body)
+    begin
+      http.start do
+        http.request_get(uri.path) do |res|
+          File.open(RAILS_ROOT + "/public/audio/" + filename_org, 'wb') do |f|
+            f.write(res.body)
+          end
         end
       end
+    rescue ex
+      flash[:notice] = "error on saving audio."
+      redirect_to :back 
     end
     # convert filename_org => filename
     begin
