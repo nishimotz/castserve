@@ -31,8 +31,13 @@ class ResourceController < ApplicationController
       end
     end
     # convert filename_org => filename
-    WaveUtils.wav_to_linear(RAILS_ROOT + "/public/audio/" + filename_org, 
-      RAILS_ROOT + "/public/audio/" + filename)
+    begin
+      WaveUtils.wav_to_linear(RAILS_ROOT + "/public/audio/" + filename_org, 
+        RAILS_ROOT + "/public/audio/" + filename)
+    rescue ex
+      flash[:notice] = "error on wav_to_linear."
+      redirect_to :back 
+    end
     # add to Mediaitem
     mediaitem = Mediaitem.new
     # mediaitem.station = @current_station
