@@ -9,7 +9,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 12) do
+ActiveRecord::Schema.define(:version => 20090720060358) do
+
+  create_table "audiofiles", :force => true do |t|
+    t.binary   "file",       :limit => 16777215
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "channels", :force => true do |t|
     t.string   "name"

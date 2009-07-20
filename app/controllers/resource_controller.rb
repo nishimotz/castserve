@@ -16,7 +16,6 @@ class ResourceController < ApplicationController
     #
   end
   
-  # duplication : mediaitem_controller.rb
   def import
     uri = URI.parse(params[:import_url])
     http = Net::HTTP.new(uri.host, uri.port)
@@ -26,9 +25,15 @@ class ResourceController < ApplicationController
     begin
       http.start do
         http.request_get(uri.path) do |res|
-          File.open(RAILS_ROOT + "/public/audio/" + filename_org, 'wb') do |f|
-            f.write(res.body)
+          if false
+            File.open(RAILS_ROOT + "/public/audio/" + filename_org, 'wb') do |f|
+              f.write(res.body)
+            end
           end
+          a = Audiofile.new
+          a.name = filename
+          a.file = res.body
+          a.save!
         end
       end
     rescue
