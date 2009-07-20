@@ -35,7 +35,6 @@ class Mediaitem < ActiveRecord::Base
     'audio/x-wav'
   end
   
-  # duplication : resource_controller.rb
   def uploaded_audio=(audio)
     # return nil if audio.respond_to?(:content_type) and audio.content_type.match(/^audio\b/)
     ext = File.extname(audio.original_filename) # ".wav" or ".mp3" ..

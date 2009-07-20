@@ -25,15 +25,9 @@ class ResourceController < ApplicationController
     begin
       http.start do
         http.request_get(uri.path) do |res|
-          if false
-            File.open(RAILS_ROOT + "/public/audio/" + filename_org, 'wb') do |f|
-              f.write(res.body)
-            end
+          File.open(RAILS_ROOT + "/tmp/" + filename_org, 'wb') do |f|
+            f.write(res.body)
           end
-          a = Audiofile.new
-          a.name = filename
-          a.file = res.body
-          a.save!
         end
       end
     rescue
@@ -42,15 +36,20 @@ class ResourceController < ApplicationController
     end
     # convert filename_org => filename
     begin
-      WaveUtils.wav_to_linear(RAILS_ROOT + "/public/audio/" + filename_org, 
-        RAILS_ROOT + "/public/audio/" + filename)
+      WaveUtils.wav_to_linear(RAILS_ROOT + "/tmp/" + filename_org, 
+                              RAILS_ROOT + "/public/audio/" + filename)
+      # WaveUtils.wav_to_linear(RAILS_ROOT + "/tmp/" + filename_org, 
+      #                         RAILS_ROOT + "/tmp/" + filename)
+      # a = Audiofile.new
+      # a.name = filename
+      # a.file = File.open(RAILS_ROOT + "/tmp/" + filename, 'rb').read
+      # a.save!
     rescue
       flash[:notice] = "error on wav_to_linear."
       redirect_to :back ; return
     end
     # add to Mediaitem
     mediaitem = Mediaitem.new
-    # mediaitem.station = @current_station
     mediaitem.filepath = filename
     mediaitem.created_at = params[:import_pub_date]
     mediaitem.title = Resource.find(params[:id]).title

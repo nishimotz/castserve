@@ -1,0 +1,13 @@
+<p>
+  <b>Size of File:</b>
+  <%=h @audiofile.file_size %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%=h @audiofile.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_audiofile_path(@audiofile) %> |
+<%= link_to 'Back', audiofiles_path %>
