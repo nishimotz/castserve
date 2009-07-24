@@ -1,4 +1,4 @@
-class AudiofilesController < ApplicationController
+class AudiofileController < ApplicationController
   # GET /audiofiles
   # GET /audiofiles.xml
   def index

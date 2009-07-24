@@ -1,8 +1,19 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :audiofiles
+  map.resources :audiofile
 
-  map.resources :audiofiles
+  # nishimotz
+  map.resources :channel, :sticker, :episode, :mediaitem, :resource
+  map.connect ':controller/:action.:format'    # mediaitem/list.rss
+  map.connect ':controller/:action'            # caststudio/rpc
 
+  map.root :controller => "home" 
+  map.connect 'login', :controller => 'sessions', :action => 'create'
+  map.connect 'logout', :controller => 'sessions', :action => 'destroy'
+
+  # Install the default routes as the lowest priority.
+  map.connect ':controller/:action/:id'
+  map.connect ':controller/:action/:id.:format'
+  
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
@@ -33,17 +44,4 @@ ActionController::Routing::Routes.draw do |map|
 
   # See how all your routes lay out with "rake routes"
 
-  # nishimotz
-  map.resources :channel, :sticker, :episode, :mediaitem, :resource
-  map.connect ':controller/:action.:format'    # mediaitem/list.rss
-  map.connect ':controller/:action'            # caststudio/rpc
-
-  map.root :controller => "home" 
-  map.connect 'login', :controller => 'sessions', :action => 'create'
-  map.connect 'logout', :controller => 'sessions', :action => 'destroy'
-
-  # Install the default routes as the lowest priority.
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
-  
 end
